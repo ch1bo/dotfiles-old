@@ -80,3 +80,6 @@ precmd() {
   title "zsh" "%m" "%55<...<%~"
   set_prompt
 }
+
+# Powerline
+. /usr/local/lib/python2.7/dist-packages/powerline/bindings/zsh/powerline.zsh
