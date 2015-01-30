@@ -1,4 +1,11 @@
 syntax on
 
-" Wrap gitcommit file types at the appropriate length
-filetype indent plugin on
+set rtp+=/usr/local/lib/python2.7/dist-packages/powerline/bindings/vim/
+
+" Always show statusline
+set laststatus=2
+set t_Co=256
+
+set shiftwidth=2
+set tabstop=2
+set expandtab
