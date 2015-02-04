@@ -13,3 +13,5 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 
+# List available hard disks
+alias disks='lsblk -o NAME,FSTYPE,SIZE,MOUNTPOINT,LABEL'
