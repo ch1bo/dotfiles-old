@@ -47,6 +47,15 @@ prompt_dir() {
 
 # Git: branch/detached head, dirty status
 prompt_git() {
+  # TODO: use greedy zsh prefixing instead of awk
+  branch=$(git symbolic-ref HEAD 2>/dev/null | awk -F/ {'print $NF'})
+  if [[ -n $branch ]]; then
+    local str=""
+    str+="%{$fg_bold[green]%}[%{$reset_color%}"
+    str+="%{$fg[cyan]%}⎇  $branch%{$reset_color%}"
+    str+="%{$fg_bold[green]%}]%{$reset_color%}"
+    echo $str
+  fi
 }
 
 # Status:
@@ -70,7 +79,7 @@ set_prompt() {
   # Arrows
   symbols+="∝ ⌁ ♯ ≈ ➟ ➩ ➪ ⤳ ➟ ➤ ⇢ ➦ "
 
-  export PROMPT="$(prompt_context)$(prompt_dir)$(prompt_status)%{$fg_bold[  white]%} ➜  %{$reset_color%}"
+  export PROMPT="$(prompt_context)$(prompt_dir)$(prompt_status)$(prompt_git)%{$fg[magenta]%} ➜  %{$reset_color%}"
   # RPROMPT="%{$fg_bold[red]%}❤ Bianca❤%{$reset_color%}"
   # SPROMPT='zsh: correct %F{red}%R%f to %F{green}%r%f [nyae]? '
 }
