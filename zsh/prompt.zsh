@@ -2,17 +2,23 @@ autoload colors && colors
 
 # Context: user@hostname
 prompt_context() {
-  local context=%{$fg_bold[green]%}%n%{$reset_color%}
+  local context
+  context+=%{$fg_bold[black]%}[%{$reset_color%}
+  context+=%{$fg_bold[green]%}%n%{$reset_color%}
   if [[ -n "$SSH_CONNECTION" ]]; then
     context=$context%{$fg_bold[magenta]%}@%m%{$reset_color%}
   fi
-  echo $context
+  context+=%{$fg_bold[black]%}]%{$reset_color%}
+  echo "$context"
 }
 
 # Dir: current working directory
 prompt_dir() {
-  echo %{$fg_bold[blue]%}%~%{$reset_color%}
-  # echo %{$fg_bold[blue]%}%1/%{$reset_color%}
+  local dir
+  dir+=%{$fg_bold[black]%}[%{$reset_color%}
+  dir+=%{$fg_bold[blue]%}%~%{$reset_color%}
+  dir+=%{$fg_bold[black]%}]%{$reset_color%}
+  echo "$dir"
 }
 
 # Git: branch/detached head, dirty status
@@ -47,14 +53,13 @@ prompt_git() {
 prompt_status() {
   local symbols
   symbols=()
-  [[ $RETVAL -ne 0 ]] && symbols+="%{%F{red}%}$CROSS"
-  [[ $UID -eq 0 ]] && symbols+="%{%F{yellow}%}$LIGHTNING"
-  [[ $(jobs -l | wc -l) -gt 0 ]] && symbols+="%{%F{cyan}%}$GEAR"
-
-  [[ -n "$symbols" ]] && prompt_segment $PRIMARY_FG default " $symbols "
+  [[ $RETVAL -ne 0 ]] && symbols+="%{$fg_bold[red]%}✘ "
+  [[ $UID -eq 0 ]] && symbols+="%{$fg_bold[yellow]%}⚡ "
+  [[ $(jobs -l | wc -l) -gt 0 ]] && symbols+="%{$fg_bold[cyan]%}⚙ "
+  echo "$symbols%{$reset_color%}"
 }
 
-function prompt_ch1bo_setup {
+set_prompt() {
   local symbols
   symbols=()
   symbols+="✚ ⬆ ⬇ ✖ ✱ ➜ ✨ ═ ◼ ±  ➦ ✔ ✘ ❤ ⚡ ⚙ ➭"
@@ -70,9 +75,12 @@ function prompt_ch1bo_setup {
   #   echo $c"bold"$reset_color
   # done
 
-  export PROMPT="$(prompt_context) $(prompt_dir) ➔  "
-  # RPROMPT='${editor_info[overwrite]}%(?:: %F{red}⏎%f)${VIM:+" %B%F{green}V%f%b"}${INSIDE_EMACS:+" %B%F{green}E%f%b"}${git_info[rprompt]}'
+  export PROMPT="$(prompt_context)$(prompt_dir)$(prompt_status)%{$fg_bold[  white]%} ➜  %{$reset_color%}"
+  # RPROMPT="%{$fg_bold[red]%}❤ Bianca❤%{$reset_color%}"
   # SPROMPT='zsh: correct %F{red}%R%f to %F{green}%r%f [nyae]? '
 }
 
-prompt_ch1bo_setup "$@"
+precmd() {
+  title "zsh" "zsh - %n@%m" ""
+  set_prompt
+}
