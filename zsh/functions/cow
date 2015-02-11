@@ -1,0 +1,4 @@
+cow() {
+  files=(/usr/share/cowsay/cows/*)
+  cowsay -f `echo ${files[($RANDOM%${#files})]}` `fortune`
+}
