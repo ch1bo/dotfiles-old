@@ -1,19 +1,30 @@
 autoload colors && colors
 
 function colors() {
-  echo "256 colors"
+  echo "===256 colors==="
   for i in {0..255} ; do
     echo "\x1b[38;5;${i}mcolour${i}"
   done
-  echo "Solarized colors"
-  echo "$fg_bold[black]base03$reset_color"
-  echo "$fg[black]base02$reset_color"
-  echo "$fg_bold[green]base01$reset_color"
-  echo "$fg_bold[yellow]base00$reset_color"
-  echo "$fg_bold[blue]base0$reset_color"
-  echo "$fg_bold[cyan]base1$reset_color"
-  echo "$fg[white]base2$reset_color"
-  echo "$fg_bold[white]base3$reset_color"
+
+  echo "\n===8 colors==="
+  echo "$fg[black]black $fg_bold[black]bold$reset_color"
+  echo "$fg[red]red $fg_bold[red]bold$reset_color"
+  echo "$fg[green]green $fg_bold[green]bold$reset_color"
+  echo "$fg[blue]blue $fg_bold[blue]bold$reset_color"
+  echo "$fg[cyan]cyan $fg_bold[cyan]bold$reset_color"
+  echo "$fg[magenta]magenta $fg_bold[magenta]bold$reset_color"
+  echo "$fg[yellow]yellow $fg_bold[yellow]bold$reset_color"
+  echo "$fg[white]white $fg_bold[white]bold$reset_color"
+
+  echo "\n===Solarized colors==="
+  # echo "$fg_bold[black]base03$reset_color"
+  # echo "$fg[black]base02$reset_color"
+  # echo "$fg_bold[green]base01$reset_color"
+  # echo "$fg_bold[yellow]base00$reset_color"
+  # echo "$fg_bold[blue]base0$reset_color"
+  # echo "$fg_bold[cyan]base1$reset_color"
+  # echo "$fg[white]base2$reset_color"
+  # echo "$fg_bold[white]base3$reset_color"
   echo "$fg[yellow]yellow$reset_color"
   echo "$fg_bold[red]orange$reset_color"
   echo "$fg[red]red$reset_color"
@@ -27,21 +38,21 @@ function colors() {
 # Context: user@hostname
 prompt_context() {
   local context
-  context+=%{$fg_bold[green]%}[%{$reset_color%}
+  context+=%{$fg_bold[black]%}[%{$reset_color%}
   context+=%{$fg_bold[magenta]%}%n%{$reset_color%}
   if [[ -n "$SSH_CONNECTION" ]]; then
     context=$context%{$fg[yellow]%}@%m%{$reset_color%}
   fi
-  context+=%{$fg_bold[green]%}]%{$reset_color%}
+  context+=%{$fg_bold[black]%}]%{$reset_color%}
   echo "$context"
 }
 
 # Dir: current working directory
 prompt_dir() {
   local dir
-  dir+=%{$fg_bold[green]%}[%{$reset_color%}
+  dir+=%{$fg_bold[black]%}[%{$reset_color%}
   dir+=%{$fg[blue]%}%~%{$reset_color%}
-  dir+=%{$fg_bold[green]%}]%{$reset_color%}
+  dir+=%{$fg_bold[black]%}]%{$reset_color%}
   echo "$dir"
 }
 
@@ -51,9 +62,9 @@ prompt_git() {
   branch=$(git symbolic-ref HEAD 2>/dev/null | awk -F/ {'print $NF'})
   if [[ -n $branch ]]; then
     local str=""
-    str+="%{$fg_bold[green]%}[%{$reset_color%}"
+    str+="%{$fg_bold[black]%}[%{$reset_color%}"
     str+="%{$fg[cyan]%}⎇  $branch%{$reset_color%}"
-    str+="%{$fg_bold[green]%}]%{$reset_color%}"
+    str+="%{$fg_bold[black]%}]%{$reset_color%}"
     echo $str
   fi
 }
@@ -79,7 +90,7 @@ set_prompt() {
   # Arrows
   symbols+="∝ ⌁ ♯ ≈ ➟ ➩ ➪ ⤳ ➟ ➤ ⇢ ➦ "
 
-  export PROMPT="$(prompt_context)$(prompt_dir)$(prompt_status)$(prompt_git)%{$fg[magenta]%} ➜  %{$reset_color%}"
+  export PROMPT="$(prompt_context)$(prompt_dir)$(prompt_status)$(prompt_git)%{$fg[magenta]%} ➜ %{$reset_color%} "
   # RPROMPT="%{$fg_bold[red]%}❤ Bianca❤%{$reset_color%}"
   # SPROMPT='zsh: correct %F{red}%R%f to %F{green}%r%f [nyae]? '
 }
