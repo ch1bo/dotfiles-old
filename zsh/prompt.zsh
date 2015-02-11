@@ -1,4 +1,5 @@
 autoload colors && colors
+autoload -Uz vcs_info
 
 function colors() {
   echo "===256 colors==="
@@ -56,14 +57,28 @@ prompt_dir() {
   echo "$dir"
 }
 
-# Git: branch/detached head, dirty status
+# Git: using vcs_info
+
+prompt_git_formats() {
+  echo "%{$fg[cyan]%}⎇  %b%{$reset_color%}"
+}
+
+prompt_git_actionformats() {
+  local str="$(prompt_git_formats)" # extend normal format
+  str+="%{$fg_bold[black]%}|%{$reset_color%}" # separator
+  str+="%{$fg[yellow]%}%a%{$reset_color%}"
+  echo str
+}
+
+zstyle ":vcs_info:*" enable git
+zstyle ":vcs_info:*" formats "$(prompt_git_formats)"
+zstyle ":vcs_info:*" actionformats "$(prompt_git_actionformats)"
+
 prompt_git() {
-  # TODO: use greedy zsh prefixing instead of awk
-  branch=$(git symbolic-ref HEAD 2>/dev/null | awk -F/ {'print $NF'})
-  if [[ -n $branch ]]; then
+  if [[ -n $vcs_info_msg_0_ ]]; then
     local str=""
     str+="%{$fg_bold[black]%}[%{$reset_color%}"
-    str+="%{$fg[cyan]%}⎇  $branch%{$reset_color%}"
+    str+="$vcs_info_msg_0_"
     str+="%{$fg_bold[black]%}]%{$reset_color%}"
     echo $str
   fi
@@ -97,5 +112,6 @@ set_prompt() {
 
 precmd() {
   title "zsh" "zsh - %n@%m" ""
+  vcs_info
   set_prompt
 }
