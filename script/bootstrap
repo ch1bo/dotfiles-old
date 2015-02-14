@@ -116,6 +116,20 @@ link_file () {
     then
       success "skipped $src"
     fi
+  fi  
+
+   
+  local dir=$(dirname "$dst")
+  if [ ! -e "$dir" ]; then
+    user "Base directory $dir not found ($(basename "$src")), do you still want to install it?\n\
+        [y]es, [n]o?"
+    read -n 1 action
+    case "$action" in
+      y )
+        mkdir -p "$dir";;
+      n )
+        skip=true;;
+    esac
   fi
 
   if [ "$skip" != "true" ]  # "false" or empty
