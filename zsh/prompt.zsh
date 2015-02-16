@@ -98,12 +98,12 @@ prompt_status() {
 }
 
 set_prompt() {
-  local symbols
-  symbols=()
-  symbols+="✚ ⬆ ⬇ ✖ ✱ ➜ ✨ ═ ◼ ±  ➦ ✔ ✘ ❤ ⚡ ⚙ ➭"
-  symbols+="★ ❗ ⌥ ⎇  ⊢ ☢ ♻ ☀ ☁ ☔ ❄ "
+  # local symbols
+  # symbols=()
+  # symbols+="✚ ⬆ ⬇ ✖ ✱ ➜ ✨ ═ ◼ ±  ➦ ✔ ✘ ❤ ⚡ ⚙ ➭"
+  # symbols+="★ ❗ ⌥ ⎇  ⊢ ☢ ♻ ☀ ☁ ☔ ❄ "
   # Arrows
-  symbols+="∝ ⌁ ♯ ≈ ➟ ➩ ➪ ⤳ ➟ ➤ ⇢ ➦ "
+  # symbols+="∝ ⌁ ♯ ≈ ➟ ➩ ➪ ⤳ ➟ ➤ ⇢ ➦ "
 
   export PROMPT="$(prompt_context)$(prompt_dir)$(prompt_status)$(prompt_git)%{$fg[magenta]%} ➜ %{$reset_color%} "
   # RPROMPT="%{$fg_bold[red]%}❤ Bianca❤%{$reset_color%}"
@@ -115,3 +115,4 @@ precmd() {
   vcs_info
   set_prompt
 }
+
