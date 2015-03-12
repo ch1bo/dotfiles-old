@@ -5,8 +5,10 @@
   co      = checkout
   graph   = log --graph --decorate --oneline
   changelog = log --pretty=format:"%s" --no-merges
-  wtf     = !$ZSH/bin/git-wtf
   count   = shortlog -sn
+  wtf     = !$ZSH/bin/git-wtf
+  up      = !$ZSH/bin/git-up
+  reup    = !$ZSH/bin/git-reup 
 [credential]
   helper = GIT_CREDENTIAL_HELPER
 [color]
