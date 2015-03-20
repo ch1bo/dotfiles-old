@@ -1,0 +1,44 @@
+{
+	"9o.hist./home/nage_se/go":
+	[
+		"help",
+		"go run",
+		"go run hello",
+		"run",
+		"go build",
+		"hello",
+		"ls bin",
+		"ls",
+		"./go"
+	],
+	"9o.hist./home/nage_se/go/src/emb.race/cli/commands":
+	[
+		"build"
+	],
+	"9o.hist./home/nage_se/go/src/embrace/one":
+	[
+		"run",
+		"exit",
+		"help",
+		"tskill"
+	],
+	"9o.hist./home/nage_se/go/src/embrace/server":
+	[
+		"asfd",
+		"go run help",
+		"go run hello.go",
+		"go run go run hello.go",
+		"go run",
+		"run",
+		"test",
+		"go test",
+		"go install",
+		"hello",
+		"go clean",
+		"server",
+		"sh"
+	],
+	"ann": "a14.02.25-1",
+	"install_version": "r14.12.06-1",
+	"version": "r14.12.06-1"
+}

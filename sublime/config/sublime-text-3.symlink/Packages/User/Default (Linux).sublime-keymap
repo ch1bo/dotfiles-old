@@ -1,0 +1,30 @@
+[
+  { "keys": ["ctrl+shift+b"], "command": "exec", "args": {"kill": true} },
+  { "keys": ["ctrl+alt+b"], "command": "show_panel", "args": {"panel": "output.exec"}},
+  { "keys": ["alt+right"], "command": "next_view" },
+  { "keys": ["alt+left"], "command": "prev_view" },
+  { "keys": ["alt+q"], "command": "wrap_lines", "args": {"width": 78} },
+  { "keys": ["ctrl+shift+up"], "command": "swap_line_up" },
+  { "keys": ["ctrl+shift+down"], "command": "swap_line_down" },
+
+  // Don't let 'reStructuredText Improved' overwrite this
+  { "keys": ["alt+shift+up"], "command": "select_lines", "args": {"forward": false} },
+  { "keys": ["alt+shift+down"], "command": "select_lines", "args": {"forward": true} },
+
+  { "keys": ["ctrl+k", "ctrl+m"], "command": "toggle_menu" },
+
+  // SyncSideBar
+  { "keys": ["ctrl+k", "ctrl+b"], "command": "toggle_side_bar" },
+  { "keys": ["ctrl+k", "ctrl+f"], "command": "reveal_in_side_bar" },
+
+  // FileBrowser
+  // { "keys": ["ctrl+k", "ctrl+b"], "command": "dired", "args": {
+  //   "immediate": true,
+  //   "single_pane": true,
+  //   "other_group": "left",
+  //   "project": true
+  // }},
+
+  // PackageBundler
+  { "keys": ["ctrl+k", "ctrl+l"], "command": "package_bundler_load" }
+]

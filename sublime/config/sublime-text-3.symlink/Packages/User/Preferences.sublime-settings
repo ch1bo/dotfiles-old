@@ -1,0 +1,62 @@
+{
+	"afterglow_folder_icons": false,
+	"color_scheme": "Packages/Color Scheme - Default/Solarized (Dark).tmTheme",
+	"contrasted_light_quick_panel": true,
+	"contrasted_tabs": true,
+	"enable_telemetry": false,
+	"ensure_newline_at_eof_on_save": true,
+	"file_exclude_patterns":
+	[
+		".DS_Store",
+		"*.pid",
+		"*.pyc"
+	],
+	"find_selected_text": true,
+	"fold_buttons": true,
+	"folder_exclude_patterns":
+	[
+		".git",
+		"__pycache__",
+		"env",
+		"env3"
+	],
+	"font_face": "Ubuntu Mono",
+	"font_options":
+	[
+		"subpixel_antialias",
+		"nobold"
+	],
+	"font_size": 16,
+	"highlight_line": true,
+	"highlight_modified_tabs": true,
+	"icon_file_type_enable": true,
+	"ignored_packages":
+	[
+		"Vintage",
+		"RestructuredText",
+		"FileBrowser",
+		"0_package_control_loader"
+	],
+	"line_padding_bottom": 0,
+	"line_padding_top": 0,
+	"preview_on_click": false,
+	"reveal-on-activate": true,
+	"rulers":
+	[
+		80,
+		120
+	],
+	"scroll_past_end": false,
+	"show_full_path": true,
+	"soda_classic_tabs": false,
+	"soda_retina_fix": false,
+	"tab_size": 2,
+	"tabs_large": true,
+	"theme": "Cobalt2.sublime-theme",
+	"translate_tabs_to_spaces": true,
+	"trim_trailing_white_space_on_save": true,
+	"ubuntu_mono_ui": false,
+	"wide_caret": true,
+	"word_wrap": true,
+	"wrap_width": 100
+}

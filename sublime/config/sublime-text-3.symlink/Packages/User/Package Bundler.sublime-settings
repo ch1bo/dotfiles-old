@@ -1,0 +1,40 @@
+{
+	"bundles":
+	{
+		"Go":
+		{
+			"ignored_packages":
+			[
+				"LaTeX-cwl",
+				"LaTeXing",
+				"PdbREPL",
+				"Restructured Text (RST) Snippets",
+				"RestructuredText Improved",
+				"SublimeHaskell",
+				"Vintage"
+			]
+		},
+		"Haskell":
+		{
+			"ignored_packages":
+			[
+				"GoSublime",
+				"LaTeX-cwl",
+				"LaTeXing",
+				"PdbREPL",
+				"Restructured Text (RST) Snippets",
+				"RestructuredText Improved",
+				"Vintage"
+			]
+		},
+		"_Default":
+		{
+			"ignored_packages":
+			[
+				"FileBrowser",
+				"Vintage"
+			]
+		}
+	},
+	"loaded_bundle": "_Default"
+}

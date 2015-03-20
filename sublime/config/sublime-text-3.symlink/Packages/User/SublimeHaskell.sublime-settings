@@ -1,0 +1,11 @@
+{
+	"auto_completion_popup": true,
+  "add_to_PATH": ["/home/nage_se/.cabal/bin"],
+
+  "enable_auto_build": false,
+  "auto_build_mode": "typecheck-then-warnings",
+  "auto_run_tests": false,
+  "enable_auto_check": true,
+  "enable_auto_lint": true,
+  "show_output_window": true
+}

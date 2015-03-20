@@ -1,0 +1,16 @@
+{
+  // Style
+  "color_scheme": "Packages/Color Scheme - Default/Solarized (Dark).tmTheme",
+  "line_numbers": false,
+  "word_wrap": false,
+  "spell_check": false,
+  "scroll_past_end": false,
+  "draw_indent_guides": false,
+  "fold_buttons": false,
+  "drag_text": false,
+  "highlight_line": true,
+  "margin": 0,
+  "tab_size": 3,
+  "rulers": [],
+  "caret_extra_width": 0 // extra caret width causes partially hidden chars
+}

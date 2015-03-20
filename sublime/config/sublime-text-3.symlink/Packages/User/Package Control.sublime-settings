@@ -1,0 +1,36 @@
+{
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"FileBrowser",
+		"GitGutter",
+		"GoSublime",
+		"Javascript Beautify",
+		"LaTeX-cwl",
+		"LaTeXing",
+		"MakeCommands",
+		"Markdown Preview",
+		"OmniMarkupPreviewer",
+		"Package Bundler",
+		"Package Control",
+		"PackageResourceViewer",
+		"Pretty JSON",
+		"Restructured Text (RST) Snippets",
+		"RestructuredText Improved",
+		"Schemr",
+		"SideBarEnhancements",
+		"SublimeGit",
+		"SublimeHaskell",
+		"SyncedSideBar",
+		"Theme - Cobalt2",
+		"Theme - Fox",
+		"Theme - Soda",
+		"Theme - Spacegray",
+		"Themr",
+		"Tomorrow Color Schemes",
+		"View In Browser",
+		"WordCount"
+	]
+}

@@ -1,0 +1,7 @@
+{
+  "cmd": "cli upload $file",
+  "shell": true,
+  "working_dir": "$file_path",
+  "path": "/home/nage_se/go/bin" // TODO: get rid of this
+  // "selector": "source.go"  // TODO: add tmLangauage for RACE
+}

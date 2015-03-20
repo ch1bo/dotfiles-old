@@ -1,0 +1,11 @@
+Index
+Cache
+Local
+Packages/bz2
+Packages/ssl-linux
+Packages/requests-oauthlib
+Packages/User/GoSublime
+Pacakges/User/GoSublime-aux.sublime-settings
+Packages/User/Package\ Control.cache
+Packages/User/.SublimeREPLHistory
+*.bak

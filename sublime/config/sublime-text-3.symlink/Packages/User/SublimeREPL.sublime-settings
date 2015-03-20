@@ -1,0 +1,8 @@
+{
+    "default_extend_env": {
+        "PYTHONIOENCODING": "utf-8",
+        "PYTHONPATH": "$folders"
+    },
+    "use_build_system_hack": false,
+    "getenv_command": ["/bin/zsh", "-c", "env"]
+}

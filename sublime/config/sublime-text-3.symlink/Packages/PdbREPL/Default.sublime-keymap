@@ -1,0 +1,5 @@
+[
+    { "keys": ["f5"], "command": "repl_submit", "args": {"cmd": "s"}},
+    { "keys": ["f6"], "command": "repl_submit", "args": {"cmd": "n"}},
+    { "keys": ["f8"], "command": "repl_submit", "args": {"cmd": "c"}}
+]
