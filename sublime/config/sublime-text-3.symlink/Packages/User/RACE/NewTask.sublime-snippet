@@ -1,0 +1,13 @@
+<snippet>
+  <content><![CDATA[
+${1:Name} {
+  port Success true
+  clientData {
+    "type": "task"
+    "name": "$1"
+  }
+}
+]]></content>
+  <tabTrigger>task</tabTrigger>
+  <scope>source.race</scope>
+</snippet>

@@ -1,0 +1,16 @@
+<snippet>
+  <content><![CDATA[
+${1:Name} {
+  port Success true
+  clientData {
+    "type": "skill"
+    "name": "$1"
+    "context_menu": @{
+      <span>Context menu of skill $1</span>
+    }@
+  }
+}
+]]></content>
+  <tabTrigger>skill</tabTrigger>
+  <scope>source.race</scope>
+</snippet>
