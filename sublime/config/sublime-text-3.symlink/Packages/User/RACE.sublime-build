@@ -1,0 +1,25 @@
+{
+  "selector": "source.race",
+  "cmd": ["cli upload $file"],
+  "shell": true,
+
+  "variants": [{
+    "name": "Upload",
+    "cmd": ["cli upload $file"]
+  }, {
+    "name": "List",
+    "cmd": ["cli list"]
+  }, {
+    "name": "Undo",
+    "cmd": ["cli undo"]
+  }, {
+    "name": "Redo",
+    "cmd": ["cli redo"]
+  }, {
+    "name": "Start",
+    "cmd": ["cli start -t $file_base_name"]
+  },{
+    "name": "Stop",
+    "cmd": ["cli stop"]
+  }]
+}
