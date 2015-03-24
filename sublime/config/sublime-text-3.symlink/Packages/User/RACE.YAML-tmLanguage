@@ -1,0 +1,137 @@
+# [PackageDev] target_format: plist, ext: tmLanguage
+---
+name: RACE
+scopeName: source.race
+fileTypes: [race]
+uuid: 138d7a37-da91-4258-a6bb-baf600a79eb7
+
+patterns:
+
+- comment: Port definition
+  name: meta.port.race
+  begin: (port)\s*(.+?)\s
+  beginCaptures:
+    '1': {name: keyword.other.port.race}
+    '2': {name: constant.other.portname.race}
+  end: \n
+  patterns:
+    - include: '#expression'
+
+- comment: Keywords
+  name: keyword.other.race
+  match: (entry|exit|barrier|-->|<-|->)
+
+- comment: Action definition, without script body
+  name: meta.action.race
+  begin: (action)
+  beginCaptures:
+    '0': {name: keyword.other.function.race}
+  end: (?=@\{)
+  patterns:
+    - include: '#expression'
+
+- comment: Type definition
+  name: meta.type.race
+  begin: (parameterType|resultType)\s*(\{)
+  beginCaptures:
+    '1': {name: keyword.other.type.race}
+    '2': {name: punctuation.section.embedded.begin.race}
+  end: \}  # TODO: nested parameter definition (structs) -> problem
+  endCaptures:
+    '0': {name: punctuation.section.embedded.end.race}
+  patterns:
+  - include: '#type'
+
+- comment: Clientdata
+  name: meta.clientdata.race
+  begin: (clientData)\s*(\{)
+  beginCaptures:
+    '1': {name: keyword.other.type.race}
+    '2': {name: punctuation.section.embedded.begin.race}
+  end: \}\n  # TODO: nested definitions (e.g. structs) -> problem
+  endCaptures:
+    '0': {name: punctuation.section.embedded.end.race}
+  patterns:
+    - include: '#contextMenu'
+    - include: "#string"
+
+- comment: Parameter value definition
+  name: meta.where.race
+  begin: (where)\s*(\{)
+  beginCaptures:
+    '1': {name: keyword.other.where.race}
+    '2': {name: punctuation.section.embedded.begin.race}
+  end: \}  # TODO: nested definitions (e.g. structs) -> problem
+  endCaptures:
+    '0': {name: punctuation.section.embedded.end.race}
+  patterns:
+    - include: '#parameter'
+
+- comment: State identifier
+  name: constant.language.state.race
+  match: '[a-zA-Z0-9]{2,}'
+
+- comment: Lua scripts
+  name: meta.script.race
+  begin: '@\{'
+  beginCaptures:
+    '0': {name: punctuation.section.embedded.begin.race}
+  end: \}@
+  endCaptures:
+    '0': {name: punctuation.section.embedded.end.race}
+  patterns:
+    - include: '#script'
+
+- comment: Code block
+  name: meta.block.race
+  begin: \{
+  beginCaptures:
+    '0': {name: punctuation.section.embedded.begin.race}
+  end: \}
+  endCaptures:
+    '0': {name: punctuation.section.embedded.end.race}
+  patterns:
+    - include: $self
+
+repository:
+
+  string:
+    patterns:
+    - comment: Double quoted string literals
+      name: string.quoted.double.race
+      match: \".*?\"
+
+  expression:
+    patterns:
+    - include: '#script'
+
+  script:
+    patterns:
+    - name: variable.language.race
+      match: (parameter|result|service|operation|call|event|result|error|status)
+    - include: 'source.lua'
+
+  type:
+    patterns:
+    - include: 'source.c'
+
+  contextMenu:
+    name: meta.clientdata.contextMenu.race
+    begin: (\"context_menu\").*(@\{)
+    beginCaptures:
+      '1': {name: string.quoted.double.race}
+      '2': {name: punctuation.section.embedded.begin.race}
+    end: \}@
+    endCaptures:
+      '0': {name: punctuation.section.embedded.begin.race}
+    patterns:
+      - include: 'text.html.basic'
+
+  parameter:
+    begin: '(.*?)\s*:'
+    beginCaptures:
+      '1': {name: variable.parameter.race}
+    end: ;
+    patterns:
+      - include: '#expression'
+...

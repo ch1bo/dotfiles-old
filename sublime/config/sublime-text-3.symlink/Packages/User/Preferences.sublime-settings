@@ -32,10 +32,10 @@
 	"icon_file_type_enable": true,
 	"ignored_packages":
 	[
-		"Vintage",
-		"RestructuredText",
 		"FileBrowser",
-		"0_package_control_loader"
+		"SublimeHaskell",
+		"Vintage",
+		"RestructuredText"
 	],
 	"line_padding_bottom": 0,
 	"line_padding_top": 0,
