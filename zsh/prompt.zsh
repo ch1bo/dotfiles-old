@@ -93,8 +93,15 @@ prompt_status() {
   symbols=()
   [[ $RETVAL -ne 0 ]] && symbols+="%{$fg[red]%}✘ "
   [[ $UID -eq 0 ]] && symbols+="%{$fg_bold[red]%}⚡ "
-  [[ $(jobs -l | wc -l) -gt 0 ]] && symbols+="%{$fg[cyan]%}⚙ "
-  echo "$symbols%{$reset_color%}"
+  [[ $(jobs -l | wc -l) -gt 0 ]] && symbols+="%{$fg[cyan]%}⚙ "  
+  # Only print if anything to display
+  if test ${#symbols[@]} -gt 0; then
+    local str=""
+    str+="%{$fg_bold[black]%}[%{$reset_color%}"
+    str+="$symbols%{$reset_color%}"
+    str+="%{$fg_bold[black]%}]%{$reset_color%}"
+    echo $str
+  fi
 }
 
 set_prompt() {
@@ -105,7 +112,7 @@ set_prompt() {
   # Arrows
   # symbols+="∝ ⌁ ♯ ≈ ➟ ➩ ➪ ⤳ ➟ ➤ ⇢ ➦ "
 
-  export PROMPT="$(prompt_context)$(prompt_dir)$(prompt_status)$(prompt_git)%{$fg[magenta]%} ➜ %{$reset_color%} "
+  export PROMPT="$(prompt_context)$(prompt_dir)$(prompt_git)$(prompt_status)%{$fg[magenta]%} ➜ %{$reset_color%} "
   # RPROMPT="%{$fg_bold[red]%}❤ Bianca❤%{$reset_color%}"
   # SPROMPT='zsh: correct %F{red}%R%f to %F{green}%r%f [nyae]? '
 }
