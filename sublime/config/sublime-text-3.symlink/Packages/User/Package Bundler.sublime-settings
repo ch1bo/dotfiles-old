@@ -5,12 +5,9 @@
 		{
 			"ignored_packages":
 			[
-				"LaTeX-cwl",
-				"LaTeXing",
 				"PdbREPL",
-				"Restructured Text (RST) Snippets",
-				"RestructuredText Improved",
 				"SublimeHaskell",
+				"FileBrowser",
 				"Vintage"
 			]
 		},
@@ -19,11 +16,8 @@
 			"ignored_packages":
 			[
 				"GoSublime",
-				"LaTeX-cwl",
-				"LaTeXing",
 				"PdbREPL",
-				"Restructured Text (RST) Snippets",
-				"RestructuredText Improved",
+				"FileBrowser",
 				"Vintage"
 			]
 		},
@@ -32,7 +26,6 @@
 			"ignored_packages":
 			[
 				"FileBrowser",
-				"SublimeHaskell",
 				"Vintage"
 			]
 		}

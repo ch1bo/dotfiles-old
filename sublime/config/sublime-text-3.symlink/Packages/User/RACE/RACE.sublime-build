@@ -1,11 +1,16 @@
 {
-  "selector": "source.race",
-  "cmd": ["cli upload $file"],
   "shell": true,
+  "selector": "source.race",
 
   "variants": [{
     "name": "Upload",
     "cmd": ["cli upload $file"]
+  }, {
+    "name": "Download",
+    "cmd": ["cli download $file_base_name"]
+  }, {
+    "name": "Sync",
+    "cmd": ["cli upload $file && cli download $file_base_name"]
   }, {
     "name": "List",
     "cmd": ["cli list"]

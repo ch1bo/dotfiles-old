@@ -1,0 +1,25 @@
+{
+  "cmd": ["go build"],
+  "shell": true,
+  "working_dir": "${project_path:$file_path}",
+  "selector": "source.go",
+  "file_regex": "(.*\\.go)\\:([0-9]+)()(.*)",
+
+  "variants": [{
+    "name": "Build",
+    "cmd": ["go build"]
+  }, {
+    "name": "Test",
+    "cmd": ["go test"],
+    "file_regex": "Location\\:\\s(.*\\.go)\\:([0-9]+)"
+  }, {
+    "name": "Test All",
+    "cmd": ["go test ${project_path:.}/..."]
+  }, {
+    "name": "Run",
+    "cmd": ["go run $file"]
+  }, {
+    "name": "Install",
+    "cmd": ["go install"]
+  }]
+}

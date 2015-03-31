@@ -33,7 +33,6 @@
 	"ignored_packages":
 	[
 		"FileBrowser",
-		"SublimeHaskell",
 		"Vintage",
 		"RestructuredText"
 	],
