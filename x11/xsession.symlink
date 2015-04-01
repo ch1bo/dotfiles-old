@@ -1,0 +1,13 @@
+#!/bin/bash
+
+test -s ${HOME}/.zshrc && source ${HOME}/.zshrc
+
+xset s 120  # screensaver
+xset +dpms
+
+# Selected set of gnome tools
+gnome-settings-daemon &
+eval `gnome-keyring-daemon --start`
+
+# Launch herbstluft window manager
+exec herbstluftwm
