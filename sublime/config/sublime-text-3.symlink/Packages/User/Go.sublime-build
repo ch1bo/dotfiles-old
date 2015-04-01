@@ -11,10 +11,12 @@
   }, {
     "name": "Test",
     "cmd": ["go test"],
-    "file_regex": "Location\\:\\s(.*\\.go)\\:([0-9]+)"
+    "working_dir": "${file_path}",
+    "file_regex": "(?:Location|at)\\:\\s(.*\\.go)\\:([0-9]+)"
   }, {
     "name": "Test All",
-    "cmd": ["go test ${project_path:.}/..."]
+    "cmd": ["go test ./..."],
+    "file_regex": "(?:Location|at)\\:\\s(.*\\.go)\\:([0-9]+)"
   }, {
     "name": "Run",
     "cmd": ["go run $file"]

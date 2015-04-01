@@ -3,13 +3,11 @@
   { "keys": ["ctrl+alt+b"], "command": "show_panel", "args": {"panel": "output.exec", "toggle": true} },
   { "keys": ["ctrl+shift+up"], "command": "swap_line_up" },
   { "keys": ["ctrl+shift+down"], "command": "swap_line_down" },
-  { "keys": ["alt+q"], "command": "wrap_lines", "args": {"width": 78} },
-
-  // Don't let 'reStructuredText Improved' overwrite this
   { "keys": ["alt+shift+up"], "command": "select_lines", "args": {"forward": false} },
   { "keys": ["alt+shift+down"], "command": "select_lines", "args": {"forward": true} },
-
+  { "keys": ["alt+q"], "command": "wrap_lines", "args": {"width": 78} },
   { "keys": ["ctrl+k", "ctrl+m"], "command": "toggle_menu" },
+  { "keys": ["ctrl+shift+o"], "command": "prompt_open_project_or_workspace"},
 
   // SyncSideBar
   { "keys": ["ctrl+k", "ctrl+b"], "command": "toggle_side_bar" },

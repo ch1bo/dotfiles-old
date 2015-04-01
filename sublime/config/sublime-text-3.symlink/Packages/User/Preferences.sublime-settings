@@ -7,9 +7,26 @@
 	"ensure_newline_at_eof_on_save": true,
 	"file_exclude_patterns":
 	[
+		"*.pyc",
+		"*.pyo",
+		"*.exe",
+		"*.dll",
+		"*.obj",
+		"*.o",
+		"*.a",
+		"*.lib",
+		"*.so",
+		"*.dylib",
+		"*.ncb",
+		"*.sdf",
+		"*.suo",
+		"*.pdb",
+		"*.idb",
 		".DS_Store",
-		"*.pid",
-		"*.pyc"
+		"*.class",
+		"*.psd",
+		"*.db",
+		"*.sublime-workspace"
 	],
 	"find_selected_text": true,
 	"fold_buttons": true,
