@@ -1,16 +1,7 @@
 # Config for command line fuzzy finder fzf
 # https://github.com/junegunn/fzf
 
-local fzfroot="$HOME/.dotfiles/fzf/fzf/"
-if [[ ! -f "$fzfroot/bin/fzf" ]]; then
-  return
-fi
-
-# Setup fzf
-# ---------
-if [[ ! "$PATH" =~ "$fzfroot/bin" ]]; then
-  export PATH="$PATH:$fzfroot/bin"
-fi
+local fzfroot="$HOME/.dotfiles/fzf/fzf"
 
 # Man path
 # --------
