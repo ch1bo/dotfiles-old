@@ -16,3 +16,4 @@ fi
 # Key bindings
 # ------------
 source "$fzfroot/shell/key-bindings.zsh"
+bindkey ^G fzf-cd-widget
