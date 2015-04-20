@@ -1,7 +1,7 @@
 {
-  "cmd": ["go build"],
+  "cmd": ["go fmt"],
   "shell": true,
-  "working_dir": "${project_path:$file_path}",
+  "working_dir": "${file_path}",
   "selector": "source.go",
   "file_regex": "(.*\\.go)\\:([0-9]+)()(.*)",
 
@@ -12,11 +12,11 @@
     "name": "Test",
     "cmd": ["go test"],
     "working_dir": "${file_path}",
-    "file_regex": "(?:Location|at)\\:\\s(.*\\.go)\\:([0-9]+)"
+    "file_regex": "(?:Location|at)\\:\\s(\\w+\\.go)\\:([0-9]+)"
   }, {
     "name": "Test All",
     "cmd": ["go test ./..."],
-    "file_regex": "(?:Location|at)\\:\\s(.*\\.go)\\:([0-9]+)"
+    "file_regex": "(?:Location|at)\\:\\s(\\w+\\.go)\\:([0-9]+)"
   }, {
     "name": "Run",
     "cmd": ["go run $file"]

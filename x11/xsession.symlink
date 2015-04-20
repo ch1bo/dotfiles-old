@@ -2,7 +2,7 @@
 
 test -s ${HOME}/.zshrc && source ${HOME}/.zshrc
 
-xset s 120  # screensaver
+#xset s 120  # screensaver
 xset +dpms
 
 # Selected set of gnome tools

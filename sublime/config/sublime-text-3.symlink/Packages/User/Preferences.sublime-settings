@@ -1,78 +1,75 @@
 {
-	"afterglow_folder_icons": false,
-	"color_scheme": "Packages/Color Scheme - Default/Solarized (Dark).tmTheme",
-	"contrasted_light_quick_panel": true,
-	"contrasted_tabs": true,
-	"enable_telemetry": false,
-	"ensure_newline_at_eof_on_save": true,
-	"file_exclude_patterns":
-	[
-		"*.pyc",
-		"*.pyo",
-		"*.exe",
-		"*.dll",
-		"*.obj",
-		"*.o",
-		"*.a",
-		"*.lib",
-		"*.so",
-		"*.dylib",
-		"*.ncb",
-		"*.sdf",
-		"*.suo",
-		"*.pdb",
-		"*.idb",
-		".DS_Store",
-		"*.class",
-		"*.psd",
-		"*.db",
-		"*.sublime-workspace"
-	],
-	"find_selected_text": true,
-	"fold_buttons": true,
-	"folder_exclude_patterns":
-	[
-		".git",
-		"__pycache__",
-		"env",
-		"env3"
-	],
-	"font_face": "Ubuntu Mono",
-	"font_options":
-	[
-		"subpixel_antialias",
-		"nobold"
-	],
-	"font_size": 16,
-	"highlight_line": true,
-	"highlight_modified_tabs": true,
-	"icon_file_type_enable": true,
-	"ignored_packages":
-	[
-		"FileBrowser",
-		"Vintage",
-		"RestructuredText"
-	],
-	"line_padding_bottom": 0,
-	"line_padding_top": 0,
-	"preview_on_click": false,
-	"reveal-on-activate": true,
-	"rulers":
-	[
-		80,
-		120
-	],
-	"scroll_past_end": false,
-	"show_full_path": true,
-	"soda_classic_tabs": false,
-	"soda_retina_fix": false,
-	"tab_size": 2,
-	"tabs_large": true,
-	"theme": "Cobalt2.sublime-theme",
-	"translate_tabs_to_spaces": true,
-	"trim_trailing_white_space_on_save": true,
-	"ubuntu_mono_ui": false,
-	"wide_caret": true,
-	"word_wrap": true,
-	"wrap_width": 100
+    "highlight_line": true, 
+    "wrap_width": 100, 
+    "preview_on_click": false, 
+    "rulers": [
+        80, 
+        120
+    ], 
+    "enable_telemetry": false, 
+    "theme": "Cobalt2.sublime-theme", 
+    "ignored_packages": [
+        "PdbREPL", 
+        "SublimeHaskell", 
+        "FileBrowser", 
+        "Vintage", 
+        "RestructuredText"
+    ], 
+    "soda_retina_fix": false, 
+    "find_selected_text": true, 
+    "trim_trailing_white_space_on_save": true, 
+    "folder_exclude_patterns": [
+        ".git", 
+        "__pycache__", 
+        "env", 
+        "env3"
+    ], 
+    "translate_tabs_to_spaces": true, 
+    "fold_buttons": true, 
+    "font_face": "Ubuntu Mono", 
+    "ubuntu_mono_ui": false, 
+    "file_exclude_patterns": [
+        "*.pyc", 
+        "*.pyo", 
+        "*.exe", 
+        "*.dll", 
+        "*.obj", 
+        "*.o", 
+        "*.a", 
+        "*.lib", 
+        "*.so", 
+        "*.dylib", 
+        "*.ncb", 
+        "*.sdf", 
+        "*.suo", 
+        "*.pdb", 
+        "*.idb", 
+        ".DS_Store", 
+        "*.class", 
+        "*.psd", 
+        "*.db", 
+        "*.sublime-workspace"
+    ], 
+    "color_scheme": "Packages/Color Scheme - Default/Solarized (Dark).tmTheme", 
+    "icon_file_type_enable": true, 
+    "reveal-on-activate": true, 
+    "line_padding_top": 0, 
+    "word_wrap": true, 
+    "contrasted_tabs": true, 
+    "line_padding_bottom": 0, 
+    "highlight_modified_tabs": true, 
+    "ensure_newline_at_eof_on_save": true, 
+    "wide_caret": true, 
+    "contrasted_light_quick_panel": true, 
+    "tabs_large": true, 
+    "scroll_past_end": false, 
+    "soda_classic_tabs": false, 
+    "afterglow_folder_icons": false, 
+    "font_size": 17, 
+    "show_full_path": true, 
+    "font_options": [
+        "subpixel_antialias", 
+        "nobold"
+    ], 
+    "tab_size": 2
 }

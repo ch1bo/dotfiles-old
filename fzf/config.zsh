@@ -16,4 +16,5 @@ fi
 # Key bindings
 # ------------
 source "$fzfroot/shell/key-bindings.zsh"
-bindkey ^G fzf-cd-widget
+# Additional Ctrl+G keybinding
+bindkey '^G' fzf-cd-widget
