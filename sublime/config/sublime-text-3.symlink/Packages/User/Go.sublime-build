@@ -16,6 +16,7 @@
   }, {
     "name": "Test All",
     "cmd": ["go test ./..."],
+    "working_dir": "${project_path:$file_path}",
     "file_regex": "(?:Location|at)\\:\\s(\\w+\\.go)\\:([0-9]+)"
   }, {
     "name": "Run",

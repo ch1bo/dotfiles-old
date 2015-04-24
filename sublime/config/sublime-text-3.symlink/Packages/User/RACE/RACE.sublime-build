@@ -7,10 +7,10 @@
     "cmd": ["cli upload $file"]
   }, {
     "name": "Download",
-    "cmd": ["cli download $file_base_name"]
+    "cmd": ["cli download $file_base_name -o $file_path -f"]
   }, {
     "name": "Sync",
-    "cmd": ["cli upload $file && cli download $file_base_name"]
+    "cmd": ["cli upload $file && cli download $file_base_name -o $file_path -f"]
   }, {
     "name": "List",
     "cmd": ["cli list"]
