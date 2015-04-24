@@ -6,6 +6,7 @@
 	[
 		"AAAPackageDev",
 		"FileBrowser",
+		"Git",
 		"GitGutter",
 		"GoSublime",
 		"Javascript Beautify",
@@ -22,7 +23,6 @@
 		"RestructuredText Improved",
 		"Schemr",
 		"SideBarEnhancements",
-		"SublimeGit",
 		"SublimeHaskell",
 		"SyncedSideBar",
 		"Theme - Cobalt2",
