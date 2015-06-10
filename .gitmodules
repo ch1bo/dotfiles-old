@@ -4,3 +4,6 @@
 [submodule "z/z"]
 	path = z/z
 	url = https://github.com/rupa/z.git
+[submodule "sublime/config/sublime-text-3.symlink/Packages/SublimeLinter-contrib-hdevtools"]
+	path = sublime/config/sublime-text-3.symlink/Packages/SublimeLinter-contrib-hdevtools
+	url = https://github.com/ch1bo/SublimeLinter-contrib-hdevtools.git
