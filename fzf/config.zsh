@@ -17,7 +17,7 @@ bindkey '^G' fzf-cd-widget
 # z (https://github.com/rupa/z) as source for fzf (only if available)
 fzf-z-widget() {
   if type "z" > /dev/null; then
-    cd "$(echo $(z | fzf) | cut -d' ' -f2- | tr -d ' ')"
+    cd "$(echo $(z | fzf +s -e) | cut -d' ' -f2- | tr -d ' ')"
     zle reset-prompt
   fi
 }

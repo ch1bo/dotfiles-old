@@ -19,7 +19,8 @@ hc keybind $Mod-Shift-r reload
 hc keybind $Mod-Shift-c close
 hc keybind $Mod-q close
 hc keybind $Mod-Return spawn x-terminal-emulator
-hc keybind $Mod-d spawn dmenu_desktop
+hc keybind $Mod-e spawn dmenu_desktop
+hc keybind $Mod-r spawn dmenu_run
 
 # basic movement
 # focusing clients
@@ -79,7 +80,7 @@ hc keybind $Mod-period use_index +1 --skip-visible
 hc keybind $Mod-comma  use_index -1 --skip-visible
 
 # layouting
-hc keybind $Mod-r remove
+hc keybind $Mod-w remove
 hc keybind $Mod-space cycle_layout 1
 hc keybind $Mod-s floating toggle
 hc keybind $Mod-f fullscreen toggle

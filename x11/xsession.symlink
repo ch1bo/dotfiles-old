@@ -3,14 +3,14 @@
 # Load zh environment
 test -s ${HOME}/.zshrc && source ${HOME}/.zshrc
 
-# Screensaver 5min, monitor suspend 6min, monitor off 7min
-xset s blank
-xset s 300
-xset dpms 0 360 420
-
 # Selected set of gnome tools
 gnome-settings-daemon &
 eval `gnome-keyring-daemon --start`
+
+# Screensaver 5min, monitor suspend 6min, monitor off 7min
+xset dpms 0 360 420
+xset s blank
+xset s 300
 
 # Load gnome settings
 gnomeconf=${HOME}/.config/dconf/gnome.conf 
