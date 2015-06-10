@@ -1,0 +1,5 @@
+{
+  "enable_ghc_mod": false,
+  "enable_hdevtools": true,
+  "add_to_PATH": ["/opt/ghc/7.10.2/bin"]
+}

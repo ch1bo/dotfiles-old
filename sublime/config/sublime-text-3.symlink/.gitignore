@@ -14,6 +14,7 @@ Packages/GoSublime
 Packages/OmniMarkupPreviewer
 Packages/User/MakeCommand.sublime-commands
 Packages/User/Package Control.last-run
+Packages/User/Package Control.*ca-bundle
 Packages/oauthlib
 Packages/requests
 

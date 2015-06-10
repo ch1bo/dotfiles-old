@@ -19,8 +19,5 @@
   //   "single_pane": true,
   //   "other_group": "left",
   //   "project": true
-  // }},
-
-  // PackageBundler
-  { "keys": ["ctrl+k", "ctrl+l"], "command": "package_bundler_load" }
+  // }}
 ]
