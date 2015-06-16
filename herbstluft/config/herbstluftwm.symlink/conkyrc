@@ -1,0 +1,12 @@
+background no
+out_to_console yes
+out_to_x  no
+update_interval 5
+total_run_times 0
+use_spacer none
+
+TEXT
+CPU ${loadavg} \
+Mem ${memperc}% \
+Bat ${battery_percent}% \
+ |  ${time %b %d %H:%M}
