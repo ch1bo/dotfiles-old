@@ -43,7 +43,7 @@ hc pad $monitor $panel_height
     # done > >(uniq_linebuffered) &
     # datepid=$!
 
-    conky -c conkyrc | while read -r; do
+    conky -c ~/.conkyrc | while read -r; do
        echo -e "conky\t$REPLY"
     done &
     conkypid=$!
