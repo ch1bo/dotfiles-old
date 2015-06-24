@@ -22,7 +22,7 @@
     "cmd": ["cli redo"]
   }, {
     "name": "Start",
-    "cmd": ["cli start -t $file_base_name"]
+    "cmd": ["cli start $file_base_name"]
   },{
     "name": "Stop",
     "cmd": ["cli stop"]

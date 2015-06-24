@@ -7,7 +7,7 @@
 
   "variants": [{
     "name": "Build",
-    "cmd": ["go build"]
+    "cmd": ["go build ./..."]
   }, {
     "name": "Test",
     "cmd": ["go test"],
