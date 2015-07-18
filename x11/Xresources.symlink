@@ -1,0 +1,72 @@
+! ------ COLORS ------
+*.foreground:   #839496
+*.background:   #002b36
+*.cURsorColor:  #eee8d5
+
+! black
+*.color0: #002b36
+*.color8: #073642
+
+! red
+*.color1: #dc322f
+*.color9: #dc322f
+
+! green
+*.color2: #859900
+*.color10: #859900
+
+! yellow
+*.color3: #b58900
+*.color11: #dec800
+
+! blue
+*.color4: #268bd2
+*.color12: #268bd2
+
+! magenta
+*.color5: #d33682
+*.color13: #6c71c4
+
+! cyan
+*.color6: #2aa198
+*.color14: #2aa198
+
+! white
+*.color7: #eee8d5
+*.color15: #fdf6e3
+
+! ------ URXVT ------
+URxvt.colorIT:  #719611
+URxvt.colorBD:  #268bd2
+URxvt.colorUL:  #6c71c4
+
+URxvt*font: xft:Ubuntu Mono:size=14:antialias=true
+URxvt*boldFont:
+URxvt*italicFont:
+URxvt*bolditalicFont:
+
+URxvt*letterSpace: -1
+URxvt*lineSpace: -1
+
+URxvt*scrollBar: false
+URxvt*transparent: false
+
+! extensions
+URxvt.perl-ext-common: default,clipboard,keyboard-select,font-size
+URxvt.keysym.C-C: perl:clipboard:copy
+URxvt.keysym.C-V: perl:clipboard:paste
+URxvt.clipboard.copycmd: xsel -ib
+URxvt.clipboard.pastecmd: xsel -ob
+URxvt.keysym.M-Escape: perl:keyboard-select:activate
+URxvt.keysym.C-plus: perl:font-size:increase
+URxvt.keysym.C-minus: perl:font-size:decrease
+
+! misc
+URxvt*scrollTtyOutput: false
+URxvt*scrollWithBuffer: true
+URxvt*scrollTtyKeypress: true
+URxvt.secondaryScreen: 1
+URxvt.secondaryScroll: 0
+URxvt.saveLines: 9999
+URxvt.iso14755: false
+URxvt.iso14755_52: false
