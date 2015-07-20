@@ -50,8 +50,14 @@
 	"icon_file_type_enable": true,
 	"ignored_packages":
 	[
+		"RestructuredText",
 		"Vintage",
-		"RestructuredText"
+		"SublimeHaskell"
+	],
+	"index_exclude_patterns":
+	[
+		"*.sublime-project",
+		"*.log"
 	],
 	"line_padding_bottom": 0,
 	"line_padding_top": 0,

@@ -1,6 +1,6 @@
 {
   "shell": true,
-  "selector": "source.race",
+  "selector": "",
 
   "variants": [{
     "name": "Upload",
