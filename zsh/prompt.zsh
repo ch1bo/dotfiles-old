@@ -25,7 +25,7 @@ prompt_dir() {
 # Git: using vcs_info
 
 prompt_git_formats() {
-  echo "%{$fg[cyan]%}⎇  %b%{$reset_color%}"
+  echo "%{$fg[cyan]%}⎇ %b%{$reset_color%}"
 }
 
 prompt_git_actionformats() {
