@@ -5,14 +5,15 @@
 	"installed_packages":
 	[
 		"AAAPackageDev",
+		"DocBlockr",
 		"FileBrowser",
 		"Git",
 		"GitGutter",
 		"GoSublime",
+		"HTML-CSS-JS Prettify",
 		"Javascript Beautify",
 		"LaTeX-cwl",
 		"LaTeXing",
-		"Markdown Preview",
 		"OmniMarkupPreviewer",
 		"Package Control",
 		"PackageResourceViewer",
@@ -33,6 +34,8 @@
 		"Themr",
 		"Tomorrow Color Schemes",
 		"View In Browser",
-		"WordCount"
+		"Vintageous",
+		"WordCount",
+		"Wrap Plus"
 	]
 }

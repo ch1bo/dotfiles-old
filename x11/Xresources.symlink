@@ -52,7 +52,7 @@ URxvt*scrollBar: false
 URxvt*transparent: false
 
 ! extensions
-URxvt.perl-ext-common: default,clipboard,keyboard-select,font-size
+URxvt.perl-ext-common: default,clipboard,keyboard-select,font-size,url-select
 URxvt.keysym.C-C: perl:clipboard:copy
 URxvt.keysym.C-V: perl:clipboard:paste
 URxvt.clipboard.copycmd: xsel -ib
@@ -60,6 +60,8 @@ URxvt.clipboard.pastecmd: xsel -ob
 URxvt.keysym.M-Escape: perl:keyboard-select:activate
 URxvt.keysym.C-plus: perl:font-size:increase
 URxvt.keysym.C-minus: perl:font-size:decrease
+URxvt.keysym.M-u: perl:url-select:select_next
+URxvt.url-select.underline: true
 
 ! misc
 URxvt*scrollTtyOutput: false
