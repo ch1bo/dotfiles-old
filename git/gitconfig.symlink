@@ -3,7 +3,7 @@
   email = sebastian.nagel@ncoding.at
 [alias]
   co      = checkout
-  graph   = log --graph --decorate --online
+  graph   = log --graph --decorate --oneline
   changelog = log --pretty=format:"%s" --no-merges
   count   = shortlog -sn
   wtf     = !$ZSH/bin/git-wtf
