@@ -6,6 +6,8 @@
   { "keys": ["alt+shift+up"], "command": "select_lines", "args": {"forward": false} },
   { "keys": ["alt+shift+down"], "command": "select_lines", "args": {"forward": true} },
   { "keys": ["alt+q"], "command": "wrap_lines_plus", "args": {"width": 80} },
+  { "keys": ["alt+,"], "command": "reindent", "args": {"single_line": true} },
+  { "keys": ["ctrl+,"], "command": "reindent", "args": {"single_line": false} },
   { "keys": ["ctrl+k", "ctrl+m"], "command": "toggle_menu" },
   { "keys": ["ctrl+shift+o"], "command": "prompt_open_project_or_workspace"},
 
