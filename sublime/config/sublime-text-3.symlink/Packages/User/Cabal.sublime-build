@@ -2,6 +2,6 @@
   "cmd": ["cabal build"],
   "shell": true,
   "working_dir": "${project_path}",
-  "selector": "source.haskell",
+  "selector": ["source.haskell", "source.cabal"],
   "file_regex": "^(.*hs):([0-9]*):?([0-9]*)"
 }
