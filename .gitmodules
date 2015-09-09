@@ -10,6 +10,3 @@
 [submodule "zsh/zsh-syntax-highlighting"]
 	path = zsh/zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
-[submodule "sublime/config/sublime-text-3.symlink/Packages/SublimeLinter"]
-	path = sublime/config/sublime-text-3.symlink/Packages/SublimeLinter
-	url = https://github.com/SublimeLinter/SublimeLinter3

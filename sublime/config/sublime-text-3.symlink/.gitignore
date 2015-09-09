@@ -2,17 +2,13 @@
 Index
 Cache
 Local
+Backup
 
-Packages/User/GoSublime
-Pacakges/User/GoSublime-aux.sublime-settings
-Packages/User/Package\ Control.cache
-Packages/User/.SublimeREPLHistory
+# Installed from Installed Packages
 Packages/SublimeHaskell
+Packages/SublimeLinter
 Packages/GoSublime
 Packages/OmniMarkupPreviewer
-Packages/User/MakeCommand.sublime-commands
-Packages/User/Package Control.last-run
-Packages/User/Package Control.*ca-bundle
 
 # Automatically installed packages
 Packages/bz2
@@ -20,7 +16,17 @@ Packages/ssl-linux
 Packages/oauthlib
 Packages/requests
 Packages/requests-oauthlib
+Packages/tabulate
 
 Packages/HTML
 Packages/Rails
 Packages/User/SublimeLinter/*.tmTheme
+
+# User stuff
+Packages/User/GoSublime
+Packages/User/GoSublime-aux.sublime-settings
+Packages/User/Package\ Control.cache
+Packages/User/.SublimeREPLHistory
+Packages/User/MakeCommand.sublime-commands
+Packages/User/Package Control.last-run
+Packages/User/Package Control.*ca-bundle
