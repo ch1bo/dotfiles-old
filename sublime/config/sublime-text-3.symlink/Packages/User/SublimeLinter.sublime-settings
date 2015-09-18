@@ -21,6 +21,16 @@
 				[
 				]
 			},
+			"hlint":
+			{
+				"@disable": false,
+				"args":
+				[
+				],
+				"excludes":
+				[
+				]
+			},
 			"jshint":
 			{
 				"@disable": false,
