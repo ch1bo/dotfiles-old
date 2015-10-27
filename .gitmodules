@@ -10,3 +10,6 @@
 [submodule "zsh/zsh-syntax-highlighting"]
 	path = zsh/zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
+[submodule "gws"]
+	path = gws
+	url = https://github.com/StreakyCobra/gws.git
