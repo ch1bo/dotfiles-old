@@ -1,5 +1,4 @@
 autoload colors && colors
-autoload -Uz vcs_info
 
 # Context: user@hostname
 prompt_context() {
@@ -19,31 +18,22 @@ prompt_dir() {
   dir+=%{$fg_bold[black]%}[%{$reset_color%}
   dir+=%{$fg[blue]%}%~%{$reset_color%}
   dir+=%{$fg_bold[black]%}]%{$reset_color%}
-  echo "$dir"
+  echo $dir
 }
 
-# Git: using vcs_info
-
-prompt_git_formats() {
-  echo "%{$fg[cyan]%}⎇ %b%{$reset_color%}"
-}
-
-prompt_git_actionformats() {
-  local str="$(prompt_git_formats)" # extend normal format
-  str+="%{$fg_bold[black]%}|%{$reset_color%}" # separator
-  str+="%{$fg[yellow]%}%a%{$reset_color%}"
-  echo str
-}
-
-zstyle ":vcs_info:*" enable git
-zstyle ":vcs_info:*" formats "$(prompt_git_formats)"
-zstyle ":vcs_info:*" actionformats "$(prompt_git_actionformats)"
-
+# Git: current HEAD tag, branch or commit
 prompt_git() {
-  if [[ -n $vcs_info_msg_0_ ]]; then
+  local head=$(git describe HEAD --all --exact-match 2> /dev/null)
+  # Remove prefixed tags/, refs/, remotes/, heads/
+  head=${head#*/}
+  # Fallback to latest commit SHA
+  if [[ -z $head ]]; then
+    head=$(git log -n 1 --format="%h" 2> /dev/null)
+  fi
+  if [[ -n $head ]]; then
     local str=""
     str+="%{$fg_bold[black]%}[%{$reset_color%}"
-    str+="$vcs_info_msg_0_"
+    str+="%{$fg[cyan]%}⎇ $head%{$reset_color%}"
     str+="%{$fg_bold[black]%}]%{$reset_color%}"
     echo $str
   fi
@@ -84,7 +74,6 @@ set_prompt() {
 
 precmd() {
   title "zsh" "zsh - %n@%m" ""
-  vcs_info
   set_prompt
 }
 
