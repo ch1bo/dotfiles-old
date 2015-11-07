@@ -26,6 +26,7 @@
 		"SideBarEnhancements",
 		"SublimeHaskell",
 		"SublimeLinter",
+		"SublimeLinter-contrib-hdevtools",
 		"SublimeLinter-flake8",
 		"SublimeLinter-hlint",
 		"SublimeLinter-jshint",

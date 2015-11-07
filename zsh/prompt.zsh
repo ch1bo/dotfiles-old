@@ -23,13 +23,13 @@ prompt_dir() {
 
 # Git: current HEAD tag, branch or commit
 prompt_git() {
-  local head=$(git describe HEAD --all --exact-match 2> /dev/null)
+  local head=$(git symbolic-ref HEAD 2> /dev/null ||
+               git describe HEAD --all --exact-match 2> /dev/null ||
+               git log -n 1 --format="%h" 2> /dev/null)
   # Remove prefixed tags/, refs/, remotes/, heads/
-  head=${head#*/}
-  # Fallback to latest commit SHA
-  if [[ -z $head ]]; then
-    head=$(git log -n 1 --format="%h" 2> /dev/null)
-  fi
+  head=${head#tags/}
+  head=${head#refs/heads/}
+  head=${head#remotes/}
   if [[ -n $head ]]; then
     local str=""
     str+="%{$fg_bold[black]%}[%{$reset_color%}"
