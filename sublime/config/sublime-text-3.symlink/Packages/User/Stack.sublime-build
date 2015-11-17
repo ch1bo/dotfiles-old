@@ -3,7 +3,7 @@
   "shell": true,
   "working_dir": "${project_path}",
   "selector": ["source.haskell", "source.cabal"],
-  "file_regex": "(\\S.*hs):([0-9]*):?([0-9]*)",
+  "file_regex": "([A-Za-z0-9_/.]*hs):([0-9]*):?([0-9]*)",
 
   "variants": [{
     "name": "Build",

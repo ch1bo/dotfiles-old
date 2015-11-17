@@ -40,6 +40,17 @@
 				"excludes":
 				[
 				]
+			},
+			"pep257":
+			{
+				"@disable": false,
+				"args":
+				[
+				],
+				"excludes":
+				[
+				],
+				"ignore": ""
 			}
 		},
 		"mark_style": "outline",
