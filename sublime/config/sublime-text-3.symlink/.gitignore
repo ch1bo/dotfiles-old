@@ -9,6 +9,7 @@ Packages/SublimeHaskell
 Packages/SublimeLinter
 Packages/GoSublime
 Packages/OmniMarkupPreviewer
+Packages/HTML-CSS-JS Prettify
 
 # Automatically installed packages
 Packages/bz2
