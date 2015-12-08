@@ -18,7 +18,7 @@ hc keybind $Mod-Shift-q quit
 hc keybind $Mod-Shift-r reload
 hc keybind $Mod-Shift-c close
 hc keybind $Mod-q close
-hc keybind $Mod-Return spawn x-terminal-emulator
+hc keybind $Mod-Return spawn urxvt
 hc keybind $Mod-e spawn dmenu_desktop
 hc keybind $Mod-r spawn dmenu_run
 

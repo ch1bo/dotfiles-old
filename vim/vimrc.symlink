@@ -1,6 +1,5 @@
-syntax on
-
-"set rtp+=/usr/local/lib/python2.7/dist-packages/powerline/bindings/vim/
+" Syntax highlighting
+syntax enable
 
 " Always show statusline
 set laststatus=2

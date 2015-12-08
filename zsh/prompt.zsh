@@ -33,7 +33,7 @@ prompt_git() {
   if [[ -n $head ]]; then
     local str=""
     str+="%{$fg_bold[black]%}[%{$reset_color%}"
-    str+="%{$fg[cyan]%}⎇ $head%{$reset_color%}"
+    str+="%{$fg[cyan]%}⌥ $head%{$reset_color%}"
     str+="%{$fg_bold[black]%}]%{$reset_color%}"
     echo $str
   fi
@@ -62,13 +62,12 @@ prompt_status() {
 set_prompt() {
   # local symbols
   # symbols=()
-  # symbols+="✚ ⬆ ⬇ ✖ ✱ ➜ ✨ ═ ◼ ±  ➦ ✔ ✘ ❤ ⚡ ⚙ ➭"
-  # symbols+="★ ❗ ⌥ ⎇  ⊢ ☢ ♻ ☀ ☁ ☔ ❄ "
+  # symbols+="✚ ⬆ ⬇ ✖ ✱ ➜ ═ ◼ ± ➦ ✔ ✘ ❤ ⚡ ⚙ ➭"
+  # symbols+="★ ⌥ ⊢ ☢ ♻ ☀ ☁ ☔ ❄ "
   # Arrows
   # symbols+="∝ ⌁ ♯ ≈ ➟ ➩ ➪ ⤳ ➟ ➤ ⇢ ➦ "
 
   export PROMPT="$(prompt_context)$(prompt_dir)$(prompt_git)$(prompt_status)%{$fg[magenta]%} ➜ %{$reset_color%}"
-  # RPROMPT="%{$fg_bold[red]%}❤ Bianca❤%{$reset_color%}"
   # SPROMPT='zsh: correct %F{red}%R%f to %F{green}%r%f [nyae]? '
 }
 

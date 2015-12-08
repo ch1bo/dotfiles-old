@@ -25,6 +25,10 @@ setopt INC_APPEND_HISTORY # adds history incrementally
 setopt HIST_IGNORE_ALL_DUPS # don't record dupes in history
 setopt HIST_REDUCE_BLANKS
 
+# vim bindings
+bindkey -v
+#linux terminal
+bindkey '^[[3~' delete-char
 # terminator
 bindkey '^[[1;5D' backward-word
 bindkey '^[[1;5C' forward-word

@@ -40,13 +40,13 @@ URxvt.colorIT:  #719611
 URxvt.colorBD:  #268bd2
 URxvt.colorUL:  #6c71c4
 
-URxvt*font: xft:Ubuntu Mono:size=14:antialias=true
+URxvt*font: xft:DejaVu Sans Mono:size=14:antialias=true
 URxvt*boldFont:
 URxvt*italicFont:
 URxvt*bolditalicFont:
 
-URxvt*letterSpace: -1
-URxvt*lineSpace: -1
+URxvt*letterSpace: 0
+URxvt*lineSpace: 0
 
 URxvt*scrollBar: false
 URxvt*transparent: false

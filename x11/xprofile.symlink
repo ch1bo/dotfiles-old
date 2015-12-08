@@ -1,0 +1,27 @@
+#!/bin/zsh
+
+# Load zsh environment (for starting programs)
+[ -e ${HOME}/.zshrc ] && source ${HOME}/.zshrc
+
+# Selected set of gnome tools
+#gnome-settings-daemon &
+#eval `gnome-keyring-daemon --start`
+
+# Load X keybindings from .xbindkeysrc
+xbindkeys
+
+# Typematic delay and rate
+xset r rate 200 30
+# No beeps
+xset -b
+# Screensaver 5min, monitor suspend 6min, monitor off 7min
+xset dpms 0 360 420
+xset s blank
+xset s 300
+
+# Load gnome settings
+#gnomeconf=${HOME}/.config/dconf/gnome.conf 
+#test -s $gnomeconf && cat $gnomeconf | dconf load / 
+
+# Desktop wallpaper
+#feh --bg-scale /usr/share/themes/Adwaita/backgrounds/good-night.jpg
