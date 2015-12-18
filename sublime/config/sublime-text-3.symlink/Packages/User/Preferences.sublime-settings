@@ -38,20 +38,19 @@
 		"env",
 		"env3"
 	],
-	"font_face": "Ubuntu Mono",
+	"font_face": "DejaVu Sans Mono",
 	"font_options":
 	[
 		"subpixel_antialias",
 		"nobold"
 	],
-	"font_size": 15,
+	"font_size": 14,
 	"highlight_line": true,
 	"highlight_modified_tabs": true,
 	"icon_file_type_enable": true,
 	"ignored_packages":
 	[
-		"RestructuredText",
-		"SublimeHaskell"
+		"RestructuredText"
 	],
 	"index_exclude_patterns":
 	[
