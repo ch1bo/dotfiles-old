@@ -11,3 +11,7 @@
   XF86MonBrightnessUp
 "xbacklight -dec 5"
   XF86MonBrightnessDown
+
+# Toggle touchpad
+"toggle-touchpad"
+  XF86Search
