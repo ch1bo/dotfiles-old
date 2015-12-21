@@ -1,20 +1,15 @@
 #!/bin/bash
 
 # Selected set of gnome tools
-#gnome-settings-daemon &
-#eval `gnome-keyring-daemon --start`
+gnome-settings-daemon &
+eval `gnome-keyring-daemon --start`
 
-# Load X keybindings from .xbindkeysrc
-xbindkeys
-
-# Typematic delay and rate
-xset r rate 200 30
-# No beeps
-xset -b
 # Screensaver 5min, monitor suspend 6min, monitor off 7min
 xset dpms 0 360 420
 xset s blank
 xset s 300
+
+xset r rate 200 60
 
 # Set a custom dpi
 xrandr --dpi 120
@@ -26,3 +21,4 @@ xrandr --dpi 120
 # Desktop wallpaper
 feh --bg-scale $DOTFILES/x11/arch-linux-15408.png
 
+exec herbstluftwm
