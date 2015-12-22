@@ -1,7 +1,4 @@
-#!/bin/zsh
-
-# Load zsh environment (for starting programs)
-[ -e ${HOME}/.zshrc ] && source ${HOME}/.zshrc
+#!/bin/bash
 
 # Selected set of gnome tools
 #gnome-settings-daemon &
@@ -19,9 +16,13 @@ xset dpms 0 360 420
 xset s blank
 xset s 300
 
+# Set a custom dpi
+xrandr --dpi 120
+
 # Load gnome settings
-#gnomeconf=${HOME}/.config/dconf/gnome.conf 
-#test -s $gnomeconf && cat $gnomeconf | dconf load / 
+#gnomeconf=${HOME}/.config/dconf/gnome.conf
+#test -s $gnomeconf && cat $gnomeconf | dconf load /
 
 # Desktop wallpaper
-#feh --bg-scale /usr/share/themes/Adwaita/backgrounds/good-night.jpg
+feh --bg-scale $DOTFILES/x11/arch-linux-15408.png
+

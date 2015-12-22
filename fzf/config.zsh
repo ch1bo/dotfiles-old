@@ -1,6 +1,6 @@
 # Config for command line fuzzy finder fzf (https://github.com/junegunn/fzf)
 export FZF_DEFAULT_COMMAND="ag -l -g ''"
-local fzfroot="$ZSH/fzf/fzf"
+local fzfroot="$DOTFILES/fzf/fzf"
 
 # Man path
 if [[ ! "$MANPATH" =~ "$fzfroot/man" && -d "$fzfroot/man" ]]; then

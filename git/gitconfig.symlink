@@ -6,10 +6,10 @@
   graph   = log --graph --decorate --oneline
   changelog = log --pretty=format:"%s" --no-merges
   count   = shortlog -sn
-  wtf     = !$ZSH/bin/git-wtf
-  up      = !$ZSH/bin/git-up
-  reup    = !$ZSH/bin/git-reup 
-  dlm     = !$ZSH/bin/git-delete-local-merged
+  wtf     = !$DOTFILES/bin/git-wtf
+  up      = !$DOTFILES/bin/git-up
+  reup    = !$DOTFILES/bin/git-reup
+  dlm     = !$DOTFILES/bin/git-delete-local-merged
 [credential]
   helper = GIT_CREDENTIAL_HELPER
 [color]
