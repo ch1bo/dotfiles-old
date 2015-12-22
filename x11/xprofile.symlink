@@ -1,24 +1,25 @@
 #!/bin/bash
 
-# Selected set of gnome tools
-gnome-settings-daemon &
-eval `gnome-keyring-daemon --start`
-
 # Screensaver 5min, monitor suspend 6min, monitor off 7min
 xset dpms 0 360 420
 xset s blank
 xset s 300
 
+# Faster keyboard typematic delay and rate
 xset r rate 200 60
 
 # Set a custom dpi
 xrandr --dpi 120
 
-# Load gnome settings
-#gnomeconf=${HOME}/.config/dconf/gnome.conf
-#test -s $gnomeconf && cat $gnomeconf | dconf load /
-
 # Desktop wallpaper
-feh --bg-scale $DOTFILES/x11/arch-linux-15408.png
+feh --bg-scale $HOME/.dotfiles/x11/arch-linux-15408.png
 
-exec herbstluftwm
+# Selected set of gnome tools and settings when in gnome
+# environment (which is assumed when the gnome.conf was
+# bootstrapped via dotfiles)
+gnomeconf=$HOME/.config/dconf/gnome.conf
+if [ -e $gnomeconf ]; then
+  gnome-settings-daemon &
+  cat $gnomeconf | dconf load /
+  eval `gnome-keyring-daemon --start`
+fi

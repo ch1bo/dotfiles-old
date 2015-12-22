@@ -19,8 +19,8 @@ hc keybind $Mod-Shift-r reload
 hc keybind $Mod-Shift-c close
 hc keybind $Mod-q close
 hc keybind $Mod-Return spawn urxvt
-hc keybind $Mod-e spawn dmenu_desktop
-hc keybind $Mod-r spawn dmenu_run
+hc keybind $Mod-p spawn dmenu_run
+hc keybind $Mod-Shift-p spawn dmenu_desktop
 
 # basic movement
 # focusing clients
@@ -84,7 +84,7 @@ hc keybind $Mod-w remove
 hc keybind $Mod-space cycle_layout 1
 hc keybind $Mod-s floating toggle
 hc keybind $Mod-f fullscreen toggle
-hc keybind $Mod-p pseudotile toggle
+hc keybind $Mod-t pseudotile toggle
 
 # mouse
 hc mouseunbind --all

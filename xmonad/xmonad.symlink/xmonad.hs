@@ -1,4 +1,4 @@
-import System.Exit
+import System.Exit (ExitCode(..), exitWith)
 import XMonad
 import XMonad.Actions.Navigation2D
 import XMonad.Hooks.DynamicLog
@@ -6,20 +6,19 @@ import XMonad.Hooks.DynamicLog
 import qualified Data.Map as M
 import qualified XMonad.StackSet as StackSet
 
-main = xmonad =<< xmobar' config'
+main = xmobar' config' >>= xmonad
 
 -- Basic configuration
 config' = navigation2D' $ defaultConfig
-  { modMask            = mod4Mask  -- Super as modifier
-  , terminal           = "urxvt"
-  , focusFollowsMouse  = True      -- Focus on mouse enter
-  , clickJustFocuses   = False     -- Click 'into' window
-  , normalBorderColor  = "#454545"
+  { modMask = mod4Mask  -- Super as modifier
+  , terminal = "urxvt"
+  , focusFollowsMouse = True      -- Focus on mouse enter
+  , clickJustFocuses = False     -- Click 'into' window
+  , normalBorderColor = "#454545"
   , focusedBorderColor = "#268bd2"
-  , borderWidth        = 2
+  , borderWidth = 2
   -- Key bindings
-  , keys               = keyBindings'
-  --, mouseBindings      = mouseBindings'
+  , keys = keyBindings'
   }
 
 -- XMobar configuration
@@ -127,3 +126,23 @@ keyBindings' conf@(XConfig {XMonad.modMask = modMask}) = M.fromList $
         | (key, sc) <- zip [xK_grave, xK_BackSpace] [0..]
         , (f, m) <- [(StackSet.view, 0), (StackSet.shift, shiftMask)]]
 
+-- Support xmonad rebuilding with info from stack.
+
+-- Run this before xmonad's main loop
+--
+-- The first argument is the absolute path to the stack.yaml you're
+-- using for xmonad.
+--
+-- The second argument is the global package database.  Once
+-- https://github.com/commercialhaskell/stack/tree/more-db-paths is
+-- merged, this argument won't be necessary and this code will get
+-- much simpler. (as it will just use "stack path --ghc-package-path")
+-- setGhcPkgPath :: IO ()
+-- setGhcPkgPath = do
+--   pkgPath <- runProcessWithInput "stack" ["path"] ""
+--   putStrLn $ "Temporarily setting GHC_PACKAGE_PATH=" ++ show pkgPath
+--   setEnv "GHC_PACKAGE_PATH" pkgPath
+--
+-- -- Put this in your startup hook
+-- unsetGhcPkgPath :: X ()
+-- unsetGhcPkgPath = liftIO $ unsetEnv "GHC_PACKAGE_PATH"
