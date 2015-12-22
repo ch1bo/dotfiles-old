@@ -1,1 +1,1 @@
-export PATH="node_modules/.bin:/usr/local/heroku/bin:$PATH"
+path=(node_modules/.bin /usr/local/heroku/bin $path)

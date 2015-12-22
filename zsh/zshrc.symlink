@@ -1,29 +1,30 @@
-# shortcut to this dotfiles path is $ZSH
-export ZSH=$HOME/.dotfiles
-
-# your project folder that we can `c [tab]` to
-export PROJECTS=~/code
-
-# use .localrc for SUPER SECRET CRAP that you don't
-# want in your public, versioned repo.
-if [[ -a ~/.localrc ]]
-then
-  source ~/.localrc
-fi
-
-# all of our zsh files
+# Generic .zshrc which sources all *.zsh files in the dotfiles
+# repository in a pre-determined sequence.
+# */path.zsh -> zsh/*.zsh -> */(^completion)*.zsh -> */completion.zsh
 typeset -U config_files
-config_files=($ZSH/*/*.zsh)
+config_files=($HOME/.dotfiles/*/*.zsh)
 
-# load the path files
-for file in ${(M)config_files:#*/path.zsh}
-do
+# source all path.zsh files
+typeset -U path
+path=(./bin $HOME/.local/bin $HOME/.dotfiles/bin $path)
+for file in ${(M)config_files:#*/path.zsh}; do
   source $file
 done
+config_files=(${config_files:#*/path.zsh})
 
-# load everything but the path and completion files
-for file in ${${config_files:#*/path.zsh}:#*/completion.zsh}
-do
+# add each topic folder to fpath so that they can add functions and completion scripts
+for topic_folder ($HOME/.dotfiles) if [ -d $topic_folder ]; then
+  fpath=($topic_folder $fpath)
+fi
+
+# source zsh specific config files
+for file in ${(M)config_files:#*/zsh/*.zsh}; do
+  source $file
+done
+config_files=(${config_files:#*/zsh/*.zsh})
+
+# source everything but the completion files
+for file in ${config_files:#*/completion.zsh}; do
   source $file
 done
 
@@ -31,13 +32,19 @@ done
 autoload -U compinit
 compinit
 
-# load every completion after autocomplete loads
-for file in ${(M)config_files:#*/completion.zsh}
-do
+# source completion files after autocomplete loads
+for file in ${(M)config_files:#*/completion.zsh}; do
   source $file
 done
 
 unset config_files
 
 # plugins
-source $ZSH/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $HOME/.dotfiles/zsh/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# use .localrc for SUPER SECRET CRAP that you don't
+# want in your public, versioned repo.
+if [[ -a $HOME/.localrc ]]; then
+  source $HOME/.localrc
+fi
+

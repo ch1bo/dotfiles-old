@@ -1,0 +1,7 @@
+typeset -U path
+path=(./bin $HOME/.local/bin $HOME/.dotfiles/bin $path)
+# source all path.zsh files
+local path_files=($HOME/.dotfiles/*/path.zsh)
+for file in $path_files; do
+  source $file
+done
