@@ -1,4 +1,4 @@
-import System.Exit
+import System.Exit (ExitCode(..), exitWith)
 import XMonad
 import XMonad.Actions.Navigation2D
 import XMonad.Hooks.DynamicLog
@@ -6,20 +6,19 @@ import XMonad.Hooks.DynamicLog
 import qualified Data.Map as M
 import qualified XMonad.StackSet as StackSet
 
-main = xmonad =<< xmobar' config'
+main = xmobar' config' >>= xmonad
 
 -- Basic configuration
 config' = navigation2D' $ defaultConfig
-  { modMask            = mod4Mask  -- Super as modifier
-  , terminal           = "urxvt"
-  , focusFollowsMouse  = True      -- Focus on mouse enter
-  , clickJustFocuses   = False     -- Click 'into' window
-  , normalBorderColor  = "#454545"
+  { modMask = mod4Mask  -- Super as modifier
+  , terminal = "urxvt"
+  , focusFollowsMouse = True      -- Focus on mouse enter
+  , clickJustFocuses = False     -- Click 'into' window
+  , normalBorderColor = "#454545"
   , focusedBorderColor = "#268bd2"
-  , borderWidth        = 2
+  , borderWidth = 2
   -- Key bindings
-  , keys               = keyBindings'
-  --, mouseBindings      = mouseBindings'
+  , keys = keyBindings'
   }
 
 -- XMobar configuration

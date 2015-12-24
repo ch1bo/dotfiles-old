@@ -1,7 +1,7 @@
 # Generic .zshrc which sources all *.zsh files in the dotfiles
 # repository in a pre-determined sequence.
 # */path.zsh -> zsh/*.zsh -> */(^completion)*.zsh -> */completion.zsh
-export $DOTFILES=$HOME/.dotfiles
+export DOTFILES=$HOME/.dotfiles
 
 typeset -U config_files
 config_files=($DOTFILES/*/*.zsh)

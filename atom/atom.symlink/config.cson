@@ -1,0 +1,45 @@
+"*":
+  editor:
+    invisibles: {}
+    showIndentGuide: true
+    fontSize: 17
+  core:
+    disabledPackages: [
+      "metrics"
+    ]
+    packagesWithKeymapsDisabled: [
+      "project-manager"
+      "hard-wrap"
+      "atom-beautify"
+      "vim-mode"
+    ]
+    autoHideMenuBar: true
+  "exception-reporting":
+    userId: "f64df4b5-3041-93dc-17d0-df0a4f6d917d"
+  welcome:
+    showOnStartup: false
+  metrics:
+    userId: "a7cdf58037babb4d26ced1362841d7f5fcd91dd2"
+  "ide-haskell": {}
+  "vim-mode":
+    useClipboardAsDefaultRegister: true
+    wrapLeftRightMotion: true
+  minimap: {}
+  linter:
+    lintOnFlyInterval: 500
+    showErrorInline: false
+  "git-diff": {}
+  "custom-title":
+    template: "<% if (projectPath) { %><%= projectName %> - <% } %><%= filePath.replace(projectPath + \"/\", \"\") %>"
+  "project-manager":
+    closeCurrent: true
+  latex:
+    customEngine: "latexmk -pdf"
+  "merge-conflicts": {}
+  "find-and-replace":
+    openProjectFindResultsInRightPane: true
+  "atom-beautify":
+    analytics: false
+    html_end_with_newline: true
+    html_brace_style: "expand"
+    html_indent_inner_html: true

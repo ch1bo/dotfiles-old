@@ -1,0 +1,10 @@
+storage
+compile-cache
+dev
+.npm
+.node-gyp
+.apm
+packages
+nohup.out
+
+projects.cson
