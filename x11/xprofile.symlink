@@ -1,9 +1,14 @@
 #!/bin/bash
 
+# No beeps
+xset -b
+
 # Screensaver 5min, monitor suspend 6min, monitor off 7min
 xset dpms 0 360 420
 xset s blank
 xset s 300
+# Faster keyboard typematic delay and rate
+xset r rate 200 60
 
 # Faster keyboard typematic delay and rate
 xset r rate 200 60
