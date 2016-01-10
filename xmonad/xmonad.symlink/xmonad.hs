@@ -10,6 +10,7 @@ import XMonad.Layout.Gaps (gaps)
 import XMonad.Layout.MultiToggle (mkToggle, single, Toggle(..), Transformer(..))
 import XMonad.Layout.MultiToggle.Instances (StdTransformers(SMARTBORDERS))
 import XMonad.Layout.LayoutModifier (ModifiedLayout(..))
+import XMonad.Util.Scratchpad (scratchpadSpawnAction, scratchpadManageHook)
 import XMonad.Util.Types (Direction2D(..))
 
 import qualified Data.Map as Map
@@ -27,6 +28,7 @@ config = withNavigation2DConfig def $
       , borderWidth = 2
       , keys = keyBindings
       , layoutHook = layouts
+      , manageHook = manageHooks
       }
 
 xmobar = statusBar "xmobar" pp toggleStrutsKey
@@ -89,6 +91,8 @@ keyBindings conf@(XConfig {XMonad.modMask = modMask}) = Map.fromList $
     , ((modMask, xK_z), sendMessage $ Toggle SMARTBORDERS)
     -- Toggle gaps and spacing on layout
     , ((modMask, xK_x), sendMessage $ Toggle EXPLODE)
+    -- Show/hide scratchpad
+    , ((modMask, xK_s), scratchpadSpawnAction config)
     ]
     ++
     --
@@ -127,3 +131,5 @@ layouts = id
   ratio = 1/2
   -- Percent of screen to increment by when resizing panes
   delta = 3/100
+
+manageHooks = scratchpadManageHook (StackSet.RationalRect 0.25 0.25 0.5 0.5)
