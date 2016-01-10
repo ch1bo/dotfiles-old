@@ -1,10 +1,11 @@
-storage
+.apm
+.node-gyp
+.npm
+blob-store
 compile-cache
 dev
-.npm
-.node-gyp
-.apm
-packages
 nohup.out
+packages
+storage
 
 projects.cson

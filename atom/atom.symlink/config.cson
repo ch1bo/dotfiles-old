@@ -2,7 +2,8 @@
   editor:
     invisibles: {}
     showIndentGuide: true
-    fontSize: 17
+    fontFamily: "DejaVu Sans Mono"
+    fontSize: 20
   core:
     disabledPackages: [
       "metrics"

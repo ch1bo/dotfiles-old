@@ -1,5 +1,6 @@
 {-# LANGUAGE DeriveDataTypeable, MultiParamTypeClasses, TypeSynonymInstances #-}
 
+import Data.Ratio ((%))
 import System.Exit (ExitCode(..), exitWith)
 import XMonad hiding (config)
 import XMonad.Actions.Navigation2D (withNavigation2DConfig, windowGo, windowSwap, switchLayer)
@@ -7,6 +8,7 @@ import XMonad.Hooks.DynamicLog (statusBar, PP(..), xmobarPP, xmobarColor, wrap)
 import XMonad.Layout.NoBorders (smartBorders)
 import XMonad.Layout.Spacing (spacing)
 import XMonad.Layout.Gaps (gaps)
+import XMonad.Layout.IM (gridIM, Property(..))
 import XMonad.Layout.MultiToggle (mkToggle, single, Toggle(..), Transformer(..))
 import XMonad.Layout.MultiToggle.Instances (StdTransformers(SMARTBORDERS))
 import XMonad.Layout.LayoutModifier (ModifiedLayout(..))
@@ -121,7 +123,7 @@ instance Transformer EXPLODE Window where
 layouts = id
   . mkToggle (single SMARTBORDERS)
   . mkToggle (single EXPLODE)
-  $ tiled ||| Mirror tiled ||| Full
+  $ tiled ||| Mirror tiled ||| Full ||| im
  where
   -- default tiling algorithm partitions the screen into two panes
   tiled = Tall nmaster delta ratio
@@ -131,5 +133,9 @@ layouts = id
   ratio = 1/2
   -- Percent of screen to increment by when resizing panes
   delta = 3/100
+  -- Instant messaging, 1/6 of width
+  im = gridIM (1%6) skype
+  skype = (ClassName "skype") `And` (Not $ Role "ConversationsWindow") 
+                              `And` (Not $ Role "CallWindow")
 
 manageHooks = scratchpadManageHook (StackSet.RationalRect 0.25 0.25 0.5 0.5)
