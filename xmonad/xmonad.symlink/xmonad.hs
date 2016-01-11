@@ -1,5 +1,6 @@
 {-# LANGUAGE DeriveDataTypeable, MultiParamTypeClasses, TypeSynonymInstances #-}
 
+import Data.Ratio ((%))
 import System.Exit (ExitCode(..), exitWith)
 import XMonad hiding (config)
 import XMonad.Actions.Navigation2D (withNavigation2DConfig, windowGo, windowSwap, switchLayer)
@@ -7,9 +8,11 @@ import XMonad.Hooks.DynamicLog (statusBar, PP(..), xmobarPP, xmobarColor, wrap)
 import XMonad.Layout.NoBorders (smartBorders)
 import XMonad.Layout.Spacing (spacing)
 import XMonad.Layout.Gaps (gaps)
+import XMonad.Layout.IM (gridIM, Property(..))
 import XMonad.Layout.MultiToggle (mkToggle, single, Toggle(..), Transformer(..))
 import XMonad.Layout.MultiToggle.Instances (StdTransformers(SMARTBORDERS))
 import XMonad.Layout.LayoutModifier (ModifiedLayout(..))
+import XMonad.Util.Scratchpad (scratchpadSpawnAction, scratchpadManageHook)
 import XMonad.Util.Types (Direction2D(..))
 
 import qualified Data.Map as Map
@@ -27,6 +30,7 @@ config = withNavigation2DConfig def $
       , borderWidth = 2
       , keys = keyBindings
       , layoutHook = layouts
+      , manageHook = manageHooks
       }
 
 xmobar = statusBar "xmobar" pp toggleStrutsKey
@@ -89,6 +93,8 @@ keyBindings conf@(XConfig {XMonad.modMask = modMask}) = Map.fromList $
     , ((modMask, xK_z), sendMessage $ Toggle SMARTBORDERS)
     -- Toggle gaps and spacing on layout
     , ((modMask, xK_x), sendMessage $ Toggle EXPLODE)
+    -- Show/hide scratchpad
+    , ((modMask, xK_s), scratchpadSpawnAction config)
     ]
     ++
     --
@@ -117,7 +123,7 @@ instance Transformer EXPLODE Window where
 layouts = id
   . mkToggle (single SMARTBORDERS)
   . mkToggle (single EXPLODE)
-  $ tiled ||| Mirror tiled ||| Full
+  $ tiled ||| Mirror tiled ||| Full ||| im
  where
   -- default tiling algorithm partitions the screen into two panes
   tiled = Tall nmaster delta ratio
@@ -127,3 +133,9 @@ layouts = id
   ratio = 1/2
   -- Percent of screen to increment by when resizing panes
   delta = 3/100
+  -- Instant messaging, 1/6 of width
+  im = gridIM (1%6) skype
+  skype = (ClassName "skype") `And` (Not $ Role "ConversationsWindow") 
+                              `And` (Not $ Role "CallWindow")
+
+manageHooks = scratchpadManageHook (StackSet.RationalRect 0.25 0.25 0.5 0.5)
