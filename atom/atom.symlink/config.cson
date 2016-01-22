@@ -3,7 +3,7 @@
     invisibles: {}
     showIndentGuide: true
     fontFamily: "DejaVu Sans Mono"
-    fontSize: 20
+    fontSize: 17
   core:
     disabledPackages: [
       "metrics"
@@ -28,7 +28,8 @@
   minimap: {}
   linter:
     lintOnFlyInterval: 500
-    showErrorInline: false
+    displayLinterStatus: false
+    lintOnFly: false
   "git-diff": {}
   "custom-title":
     template: "<% if (projectPath) { %><%= projectName %> - <% } %><%= filePath.replace(projectPath + \"/\", \"\") %>"
@@ -44,3 +45,6 @@
     html_end_with_newline: true
     html_brace_style: "expand"
     html_indent_inner_html: true
+  "linter-hlint": {}
+  "linter-hdevtools":
+    hdevtoolsUseStack: true
