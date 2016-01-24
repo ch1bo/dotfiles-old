@@ -4,7 +4,7 @@ autoload colors && colors
 prompt_context() {
   local context
   context+=%{$fg_bold[black]%}[%{$reset_color%}
-  context+=%{$fg_bold[magenta]%}%n%{$reset_color%}
+  context+=%{$fg[magenta]%}%n%{$reset_color%}
   if [[ -n "$SSH_CONNECTION" ]]; then
     context=$context%{$fg[yellow]%}@%m%{$reset_color%}
   fi
@@ -67,7 +67,7 @@ set_prompt() {
   # Arrows
   # symbols+="∝ ⌁ ♯ ≈ ➟ ➩ ➪ ⤳ ➟ ➤ ⇢ ➦ "
 
-  export PROMPT="$(prompt_context)$(prompt_dir)$(prompt_git)$(prompt_status)%{$fg[magenta]%} ➜ %{$reset_color%}"
+  export PROMPT="$(prompt_context)$(prompt_dir)$(prompt_git)$(prompt_status)%{$fg[cyan]%} ➜ %{$reset_color%}"
   # SPROMPT='zsh: correct %F{red}%R%f to %F{green}%r%f [nyae]? '
 }
 

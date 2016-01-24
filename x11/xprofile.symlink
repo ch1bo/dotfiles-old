@@ -21,16 +21,17 @@ xrandr --dpi 120
 xbindkeys
 
 # Desktop wallpaper
-feh --bg-scale $HOME/.dotfiles/x11/arch-linux-15408.png
+feh --bg-scale $HOME/.dotfiles/x11/matterhorn.jpg
 
 export PATH=$HOME/.dotfiles/bin:$PATH
 
-# Selected set of gnome tools and settings when in gnome
-# environment (which is assumed when the gnome.conf was
-# bootstrapped via dotfiles)
-gnomeconf=$HOME/.config/dconf/gnome.conf
-if [ -e $gnomeconf ]; then
-  gnome-settings-daemon &
-  cat $gnomeconf | dconf load /
-  eval `gnome-keyring-daemon --start`
+# Selected set of gnome tools and settings
+if [ $(which gnome-keyring-daemon 2> /dev/null) ]; then
+  eval $(gnome-keyring-daemon --start)
 fi
+
+# gnomeconf=$HOME/.config/dconf/gnome.conf
+# if [ -e $gnomeconf -a $(which gnome-settings-daemon 2> /dev/null) ]; then
+#   gnome-settings-daemon &
+#   cat $gnomeconf | dconf load /
+# fi

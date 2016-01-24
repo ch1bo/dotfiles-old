@@ -1,44 +1,55 @@
 ! ------ COLORS ------
-*.foreground:   #839496
-*.background:   #002b36
-*.cURsorColor:  #eee8d5
+! OneDark color scheme extracted from atom text editor
 
-! black
-*.color0: #002b36
-*.color8: #073642
+#define black_normal   #282C34
+#define red_normal     #E06C75
+#define green_normal   #98C379
+#define yellow_normal  #E5C07B
+#define blue_normal    #61AFEF
+#define magenta_normal #C678DD
+#define cyan_normal    #56B6C2
+#define white_normal   #ABB2BF
+#define black_bright   #3E4451
+#define red_bright     #E05252
+#define green_bright   #43D08A
+#define yellow_bright  #E0C285
+#define blue_bright    #528BFF
+#define magenta_bright #C678DD
+#define cyan_bright    #56B6C2
+#define white_bright   #D8DEE9
 
-! red
-*.color1: #dc322f
-*.color9: #dc322f
+*.foreground:   white_normal
+*.background:   black_normal
+*.cursorColor:  white_bright
 
-! green
-*.color2: #859900
-*.color10: #859900
+*.color0:  black_normal
+*.color8:  black_bright
 
-! yellow
-*.color3: #b58900
-*.color11: #dec800
+*.color1:  red_normal
+*.color9:  red_bright
 
-! blue
-*.color4: #268bd2
-*.color12: #268bd2
+*.color2:  green_normal
+*.color10: green_bright
 
-! magenta
-*.color5: #d33682
-*.color13: #6c71c4
+*.color3:  yellow_normal
+*.color11: yellow_bright
 
-! cyan
-*.color6: #2aa198
-*.color14: #2aa198
+*.color4:  blue_normal
+*.color12: blue_bright
 
-! white
-*.color7: #eee8d5
-*.color15: #fdf6e3
+*.color5:  magenta_normal
+*.color13: magenta_bright
+
+*.color6:  cyan_normal
+*.color14: cyan_bright
+
+*.color7:  white_normal
+*.color15: white_bright
 
 ! ------ URXVT ------
-URxvt.colorIT:  #719611
-URxvt.colorBD:  #268bd2
-URxvt.colorUL:  #6c71c4
+URxvt.colorIT:  green_normal
+URxvt.colorBD:  blue_bright
+URxvt.colorUL:  blue_normal
 
 URxvt*font: xft:DejaVu Sans Mono:size=14:antialias=true
 URxvt*boldFont:

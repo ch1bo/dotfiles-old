@@ -16,10 +16,6 @@ alias ll="ls -alhF"
 alias la="ls -A"
 alias l="ls -CF"
 
-# List available hard disks
-alias disks="lsblk -o NAME,FSTYPE,SIZE,MOUNTPOINT,LABEL,UUID"
-
-# Count todos in current dir
 alias todos="grep -R 'TODO' . | wc -l"
-
+alias skype="apulse32 skype"
 alias hdevtools="stack exec --no-ghc-package-path hdevtools --"

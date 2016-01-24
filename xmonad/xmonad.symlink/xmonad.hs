@@ -4,8 +4,7 @@ import Data.Ratio ((%))
 import System.Exit (ExitCode(..), exitWith)
 import XMonad hiding (config)
 import XMonad.Actions.Navigation2D (withNavigation2DConfig, windowGo, windowSwap, switchLayer)
-import XMonad.Hooks.DynamicLog (statusBar, PP(..), xmobarPP, xmobarColor, wrap)
-import XMonad.Layout.NoBorders (smartBorders)
+import XMonad.Hooks.DynamicLog (statusBar, PP(..), defaultPP, xmobarColor, wrap, shorten)
 import XMonad.Layout.Spacing (spacing)
 import XMonad.Layout.Gaps (gaps)
 import XMonad.Layout.IM (gridIM, Property(..))
@@ -25,8 +24,8 @@ config = withNavigation2DConfig def $
       , terminal = "urxvt"
       , focusFollowsMouse = True -- Focus on mouse enter
       , clickJustFocuses = False -- Click 'into' window
-      , normalBorderColor = "#454545"
-      , focusedBorderColor = "#268bd2"
+      , normalBorderColor = "#3E4451"
+      , focusedBorderColor = "#528BFF"
       , borderWidth = 2
       , keys = keyBindings
       , layoutHook = layouts
@@ -36,7 +35,11 @@ config = withNavigation2DConfig def $
 xmobar = statusBar "xmobar" pp toggleStrutsKey
  where
   -- Pretty print xmonad status
-  pp = xmobarPP { ppCurrent = xmobarColor "#429942" "" . wrap "<" ">" }
+  pp = defaultPP { ppCurrent = xmobarColor "#528BFF" "" . wrap "[" "]"
+                 , ppTitle   = xmobarColor "#528BFF"  "" . shorten 40
+                 , ppVisible = wrap "(" ")"
+                 , ppUrgent  = xmobarColor "#E06C75" "#E5C07B"
+                 }
   -- Toggle display of top bar
   toggleStrutsKey XConfig {XMonad.modMask = modMask} = (modMask, xK_b)
 
@@ -95,6 +98,8 @@ keyBindings conf@(XConfig {XMonad.modMask = modMask}) = Map.fromList $
     , ((modMask, xK_x), sendMessage $ Toggle EXPLODE)
     -- Show/hide scratchpad
     , ((modMask, xK_s), scratchpadSpawnAction config)
+    -- Launch browser
+    , ((modMask, xK_w), spawn "chromium")
     ]
     ++
     --
