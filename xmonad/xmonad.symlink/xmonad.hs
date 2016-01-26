@@ -140,7 +140,7 @@ layouts = id
   delta = 3/100
   -- Instant messaging, 1/6 of width
   im = gridIM (1%6) skype
-  skype = (ClassName "Skype") `And` (Not $ Role "ConversationsWindow") 
+  skype = (ClassName "Skype") `And` (Not $ Role "ConversationsWindow")
                               `And` (Not $ Role "CallWindow")
 
 manageHooks = scratchpadManageHook (StackSet.RationalRect 0.25 0.25 0.5 0.5)

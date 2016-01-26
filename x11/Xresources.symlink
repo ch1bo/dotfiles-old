@@ -2,19 +2,29 @@
 ! OneDark color scheme extracted from atom text editor
 
 #define black_normal   #282C34
+! hsl(355, 65%, 65%)
 #define red_normal     #E06C75
+! hsl(95, 38%, 62%)
 #define green_normal   #98C379
+! hsl(39, 67%, 69%)
 #define yellow_normal  #E5C07B
+! hsl(207, 82%, 66%)
 #define blue_normal    #61AFEF
+! hsl(286, 60%, 67%)
 #define magenta_normal #C678DD
 #define cyan_normal    #56B6C2
 #define white_normal   #ABB2BF
 #define black_bright   #3E4451
-#define red_bright     #E05252
-#define green_bright   #43D08A
-#define yellow_bright  #E0C285
-#define blue_bright    #528BFF
-#define magenta_bright #C678DD
+! hsl(355, 90%, 65%)
+#define red_bright     #F65563
+! hsl(95, 50%, 60%)
+#define green_bright   #91CC66
+! hsl(39, 100%, 80%)
+#define yellow_bright  #FFDB99
+! hsl(207, 100%, 85%)
+#define blue_bright    #B3DDFF
+! hsl(286, 90%, 80%)
+#define magenta_bright #E49EFA
 #define cyan_bright    #56B6C2
 #define white_bright   #D8DEE9
 
@@ -48,7 +58,7 @@
 
 ! ------ URXVT ------
 URxvt.colorIT:  green_normal
-URxvt.colorBD:  blue_bright
+URxvt.colorBD:  #528BFF
 URxvt.colorUL:  blue_normal
 
 URxvt*font: xft:DejaVu Sans Mono:size=14:antialias=true
