@@ -50,3 +50,6 @@
     hdevtoolsUseStack: true
   "one-dark-ui":
     fontSize: 15
+  pigments:
+    delayBeforeScan: 2000
+  build: {}
