@@ -3,7 +3,7 @@
     invisibles: {}
     showIndentGuide: true
     fontFamily: "DejaVu Sans Mono"
-    fontSize: 19
+    fontSize: 17
   core:
     disabledPackages: [
       "metrics"
@@ -48,8 +48,7 @@
   "linter-hlint": {}
   "linter-hdevtools":
     hdevtoolsUseStack: true
-  "one-dark-ui":
-    fontSize: 15
   pigments:
     delayBeforeScan: 2000
   build: {}
+  "linter-jshint": {}

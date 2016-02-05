@@ -32,6 +32,12 @@
 'atom-text-editor.vim-mode:not(.insert-mode)':
   '=': 'atom-beautify:beautify-editor'
 
+# build
+'atom-workspace, atom-text-editor':
+  'ctrl-b': 'build:trigger'
+  'ctrl-alt-b': 'build:toggle-panel'
+  'ctrl-shift-b': 'build:select-active-target'
+
 # vim-like home-row navigation in project find results
 '.results-view':
   'k': 'core:move-up'
