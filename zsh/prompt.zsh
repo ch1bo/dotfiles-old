@@ -16,7 +16,11 @@ prompt_context() {
 prompt_dir() {
   local dir
   dir+=%{$fg_bold[black]%}[%{$reset_color%}
-  dir+=%{$fg[blue]%}%~%{$reset_color%}
+  if [[ -n $PROMPT_COLLAPSE ]]; then
+    dir+=%{$fg[blue]%}%3(c:.../:)%2c%{$reset_color%}
+  else
+    dir+=%{$fg[blue]%}%~%{$reset_color%}
+  fi
   dir+=%{$fg_bold[black]%}]%{$reset_color%}
   echo $dir
 }
@@ -33,7 +37,11 @@ prompt_git() {
   if [[ -n $head ]]; then
     local str=""
     str+="%{$fg_bold[black]%}[%{$reset_color%}"
-    str+="%{$fg[cyan]%}⌥ $head%{$reset_color%}"
+    if [[ -n $PROMPT_COLLAPSE ]]; then
+      str+="%{$fg[cyan]%}⌥%{$reset_color%}"
+    else
+      str+="%{$fg[cyan]%}⌥ $head%{$reset_color%}"
+    fi
     str+="%{$fg_bold[black]%}]%{$reset_color%}"
     echo $str
   fi
@@ -59,15 +67,26 @@ prompt_status() {
   fi
 }
 
-set_prompt() {
-  # local symbols
-  # symbols=()
-  # symbols+="✚ ⬆ ⬇ ✖ ✱ ➜ ═ ◼ ± ➦ ✔ ✘ ❤ ⚡ ⚙ ➭"
-  # symbols+="★ ⌥ ⊢ ☢ ♻ ☀ ☁ ☔ ❄ "
-  # Arrows
-  # symbols+="∝ ⌁ ♯ ≈ ➟ ➩ ➪ ⤳ ➟ ➤ ⇢ ➦ "
+collapse_prompt() {
+  if [[ -n $PROMPT_COLLAPSE ]]; then
+    unset PROMPT_COLLAPSE
+  else
+    export PROMPT_COLLAPSE=true
+  fi
+  # local f="/tmp/zsh_prompt_collapse"
+  # if [ -e $collape_f ]; then
+  #   rm $collapse_f
+  # else
+  #   touch $collapse_f
+  # fi
+}
 
-  export PROMPT="$(prompt_context)$(prompt_dir)$(prompt_git)$(prompt_status)%{$fg[cyan]%} ➜ %{$reset_color%}"
+set_prompt() {
+  if [[ -n $PROMPT_COLLAPSE ]]; then
+    export PROMPT="$(prompt_dir)$(prompt_git)$(prompt_status)%{$fg[cyan]%} ➜ %{$reset_color%}"
+  else
+    export PROMPT="$(prompt_context)$(prompt_dir)$(prompt_git)$(prompt_status)%{$fg[cyan]%} ➜ %{$reset_color%}"
+  fi
   # SPROMPT='zsh: correct %F{red}%R%f to %F{green}%r%f [nyae]? '
 }
 
