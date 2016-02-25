@@ -1,5 +1,3 @@
-set my_user="nage_se"
-
 ### General mailbox settings
 set header_cache = "~/.cache/mutt"
 set imap_check_subscribed
@@ -8,20 +6,8 @@ unset imap_passive
 set mail_check = 60
 set mbox_type=Maildir
 
-### Receiving
-set folder=imaps://$my_user@mail.kbee.lan
-set imap_user=$my_user
-set spoolfile=+INBOX
-set imap_check_subscribed
-
-### Sending
-set record = +Sent
-set realname = "Sebastian Nagel"
-set from = $my_user@kbee.ag
-set use_from = yes
-set smtp_url=smtps://$my_user@mail.kbee.lan
-set ssl_force_tls = yes
-set ssl_starttls = yes
+### Accounts
+source "~/.mutt/kbee"
 
 ### Colors
 color hdrdefault blue black
@@ -59,3 +45,6 @@ macro pager b "<enter-command>toggle sidebar_visible<enter>" "toggle sidebar"
 bind index,pager \CP sidebar-prev
 bind index,pager \CN sidebar-next
 bind index,pager \CO sidebar-open
+
+# Refresh mails using Ctrl-r
+bind index,pager \CR imap-fetch-mail
