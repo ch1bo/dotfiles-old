@@ -37,8 +37,8 @@ set sidebar_visible=yes
 set sidebar_delim='|'
 set sidebar_sort=yes
 
-macro index b "<enter-command>toggle sidebar_visible<enter>" "toggle sidebar"
-macro pager b "<enter-command>toggle sidebar_visible<enter>" "toggle sidebar"
+macro index \Cb "<enter-command>toggle sidebar_visible<enter>" "toggle sidebar"
+macro pager \Cb "<enter-command>toggle sidebar_visible<enter>" "toggle sidebar"
 
 # Ctrl-n, Ctrl-p to select next, previous folder.
 # Ctrl-o to open selected folder.
