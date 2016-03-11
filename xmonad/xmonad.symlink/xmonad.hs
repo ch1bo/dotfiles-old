@@ -86,11 +86,11 @@ keyBindings conf@(XConfig {XMonad.modMask = modMask}) = Map.fromList $
     , ((modMask .|. shiftMask, xK_h), windowSwap L False)
     , ((modMask .|. shiftMask, xK_k), windowSwap U False)
     , ((modMask .|. shiftMask, xK_j), windowSwap D False)
-    -- Resize windows
-    , ((modMask .|. controlMask, xK_l), sendMessage Expand)
-    , ((modMask .|. controlMask, xK_h), sendMessage Shrink)
-    , ((modMask .|. controlMask, xK_j), sendMessage MirrorShrink)
-    , ((modMask .|. controlMask, xK_k), sendMessage MirrorExpand)
+    -- Resize windows TODO(SN): switch keys when (not) mirrored layout
+    , ((modMask .|. controlMask, xK_l), sendMessage MirrorShrink)
+    , ((modMask .|. controlMask, xK_h), sendMessage MirrorExpand)
+    , ((modMask .|. controlMask, xK_j), sendMessage Expand)
+    , ((modMask .|. controlMask, xK_k), sendMessage Shrink)
     -- Toggle maximize
     , ((modMask, xK_m), withFocused (sendMessage . maximizeRestore))
     -- Toggle smart borders on layout
