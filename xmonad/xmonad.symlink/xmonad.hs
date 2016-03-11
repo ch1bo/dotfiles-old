@@ -8,9 +8,11 @@ import XMonad.Hooks.DynamicLog (statusBar, PP(..), defaultPP, xmobarColor, wrap,
 import XMonad.Layout.Spacing (spacing)
 import XMonad.Layout.Gaps (gaps)
 import XMonad.Layout.IM (gridIM, Property(..))
+import XMonad.Layout.Maximize (maximize, maximizeRestore)
 import XMonad.Layout.MultiToggle (mkToggle, single, Toggle(..), Transformer(..))
 import XMonad.Layout.MultiToggle.Instances (StdTransformers(SMARTBORDERS))
 import XMonad.Layout.LayoutModifier (ModifiedLayout(..))
+import XMonad.Layout.ResizableTile (ResizableTall(..), MirrorResize(..))
 import XMonad.Util.Scratchpad (scratchpadSpawnAction, scratchpadManageHook)
 import XMonad.Util.Types (Direction2D(..))
 
@@ -64,14 +66,6 @@ keyBindings conf@(XConfig {XMonad.modMask = modMask}) = Map.fromList $
     -- Focus next/previous window in the stack
     , ((modMask, xK_Tab), windows StackSet.focusDown)
     , ((modMask .|. shiftMask, xK_Tab), windows StackSet.focusUp)
-    -- Swap the focused window with the next window
-    , ((modMask .|. shiftMask, xK_j), windows StackSet.swapDown)
-    -- Swap the focused window with the previous window
-    , ((modMask .|. shiftMask, xK_k), windows StackSet.swapUp)
-    -- Focus the master window
-    , ((modMask, xK_m), windows StackSet.focusMaster)
-    -- Swap the focused window and the master window
-    , ((modMask .|. shiftMask, xK_m), windows StackSet.swapMaster)
     -- Shrink/Expand the master area
     , ((modMask, xK_minus), sendMessage Shrink)
     , ((modMask, xK_equal), sendMessage Expand)
@@ -92,6 +86,13 @@ keyBindings conf@(XConfig {XMonad.modMask = modMask}) = Map.fromList $
     , ((modMask .|. shiftMask, xK_h), windowSwap L False)
     , ((modMask .|. shiftMask, xK_k), windowSwap U False)
     , ((modMask .|. shiftMask, xK_j), windowSwap D False)
+    -- Resize windows
+    , ((modMask .|. controlMask, xK_l), sendMessage Expand)
+    , ((modMask .|. controlMask, xK_h), sendMessage Shrink)
+    , ((modMask .|. controlMask, xK_j), sendMessage MirrorShrink)
+    , ((modMask .|. controlMask, xK_k), sendMessage MirrorExpand)
+    -- Toggle maximize
+    , ((modMask, xK_m), withFocused (sendMessage . maximizeRestore))
     -- Toggle smart borders on layout
     , ((modMask, xK_z), sendMessage $ Toggle SMARTBORDERS)
     -- Toggle gaps and spacing on layout
@@ -130,8 +131,8 @@ layouts = id
   . mkToggle (single EXPLODE)
   $ tiled ||| Mirror tiled ||| Full ||| im
  where
-  -- default tiling algorithm partitions the screen into two panes
-  tiled = Tall nmaster delta ratio
+  -- Resizable tiling with maximize modifier
+  tiled = maximize $ ResizableTall nmaster delta ratio []
   -- The default number of windows in the master pane
   nmaster = 2
   -- Default proportion of screen occupied by master pane
