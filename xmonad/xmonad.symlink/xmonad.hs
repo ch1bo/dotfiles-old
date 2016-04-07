@@ -3,7 +3,7 @@
 import Data.Ratio ((%))
 import System.Exit (ExitCode(..), exitWith)
 import XMonad hiding (config)
-import XMonad.Actions.Navigation2D (withNavigation2DConfig, windowGo, windowSwap, switchLayer)
+import XMonad.Actions.Navigation2D (withNavigation2DConfig, defaultNavigation2DConfig, windowGo, windowSwap, switchLayer)
 import XMonad.Hooks.DynamicLog (statusBar, PP(..), defaultPP, xmobarColor, wrap, shorten)
 import XMonad.Layout.Spacing (spacing)
 import XMonad.Layout.Gaps (gaps)
@@ -21,18 +21,18 @@ import qualified XMonad.StackSet as StackSet
 
 main = xmobar config >>= xmonad
 
-config = withNavigation2DConfig def $
-  def { modMask = mod4Mask -- Super as modifier
-      , terminal = "urxvt"
-      , focusFollowsMouse = True -- Focus on mouse enter
-      , clickJustFocuses = False -- Click 'into' window
-      , normalBorderColor = "#3E4451"
-      , focusedBorderColor = "#528BFF"
-      , borderWidth = 2
-      , keys = keyBindings
-      , layoutHook = layouts
-      , manageHook = manageHooks
-      }
+config = withNavigation2DConfig defaultNavigation2DConfig $
+  defaultConfig { modMask = mod4Mask -- Super as modifier
+                , terminal = "urxvt"
+                , focusFollowsMouse = True -- Focus on mouse enter
+                , clickJustFocuses = False -- Click 'into' window
+                , normalBorderColor = "#3E4451"
+                , focusedBorderColor = "#528BFF"
+                , borderWidth = 2
+                , keys = keyBindings
+                , layoutHook = layouts
+                , manageHook = manageHooks
+                }
 
 xmobar = statusBar "xmobar" pp toggleStrutsKey
  where
