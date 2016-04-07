@@ -30,8 +30,6 @@ if [ $(which gnome-keyring-daemon 2> /dev/null) ]; then
   eval $(gnome-keyring-daemon --start)
 fi
 
-gnomeconf=$HOME/.config/dconf/gnome.conf
-if [ -e $gnomeconf -a $(which gnome-settings-daemon 2> /dev/null) ]; then
+if [ $(which gnome-settings-daemon 2> /dev/null) ]; then
   gnome-settings-daemon &
-  cat $gnomeconf | dconf load /
 fi
