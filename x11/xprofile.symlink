@@ -28,6 +28,7 @@ export PATH=$HOME/.dotfiles/bin:$PATH
 # Selected set of gnome tools and settings
 if [ $(which gnome-keyring-daemon 2> /dev/null) ]; then
   eval $(gnome-keyring-daemon --start)
+  export SSH_AUTH_SOCK
 fi
 
 if [ $(which gnome-settings-daemon 2> /dev/null) ]; then
