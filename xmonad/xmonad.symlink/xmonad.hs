@@ -23,7 +23,7 @@ main = xmobar config >>= xmonad
 
 config = withNavigation2DConfig defaultNavigation2DConfig $
   defaultConfig { modMask = mod4Mask -- Super as modifier
-                , terminal = "urxvt"
+                , terminal = "x-terminal-emulator"
                 , focusFollowsMouse = True -- Focus on mouse enter
                 , clickJustFocuses = False -- Click 'into' window
                 , normalBorderColor = "#3E4451"
@@ -100,7 +100,7 @@ keyBindings conf@(XConfig {XMonad.modMask = modMask}) = Map.fromList $
     -- Show/hide scratchpad
     , ((modMask, xK_s), scratchpadSpawnAction config)
     -- Launch browser
-    , ((modMask, xK_w), spawn "chromium")
+    , ((modMask, xK_w), spawn "x-www-browser")
     ]
     ++
     --
