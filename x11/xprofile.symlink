@@ -1,5 +1,18 @@
 #!/bin/bash
 
+export PATH=$HOME/.dotfiles/bin:$PATH
+
+# Gnome keyring as SSH agent
+if [ $(which gnome-keyring-daemon 2> /dev/null) ]; then
+  eval $(gnome-keyring-daemon --start)
+  export SSH_AUTH_SOCK
+fi
+
+# Gnome settings daemon will set keyboard delay and rate
+if [ $(which gnome-settings-daemon 2> /dev/null) ]; then
+  gnome-settings-daemon &
+fi
+
 # No beeps
 xset -b
 
@@ -12,7 +25,7 @@ xset s 300
 xset r rate 200 60
 
 # Set a custom dpi
-xrandr --dpi 120
+#xrandr --dpi 120
 
 # Load custom keybindings
 xbindkeys
@@ -22,15 +35,3 @@ xrdb -load $HOME/.Xresources
 
 # Desktop wallpaper
 feh --bg-scale $HOME/.dotfiles/x11/matterhorn.jpg
-
-export PATH=$HOME/.dotfiles/bin:$PATH
-
-# Selected set of gnome tools and settings
-if [ $(which gnome-keyring-daemon 2> /dev/null) ]; then
-  eval $(gnome-keyring-daemon --start)
-  export SSH_AUTH_SOCK
-fi
-
-if [ $(which gnome-settings-daemon 2> /dev/null) ]; then
-  gnome-settings-daemon &
-fi

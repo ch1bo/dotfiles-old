@@ -140,8 +140,9 @@ layouts = id
   -- Percent of screen to increment by when resizing panes
   delta = 3/100
   -- Instant messaging, 1/6 of width
-  im = gridIM (1%6) skype
+  im = gridIM (1%6) (skype `Or` pidgin)
   skype = (ClassName "Skype") `And` (Not $ Role "ConversationsWindow")
                               `And` (Not $ Role "CallWindow")
+  pidgin = (ClassName "Pidgin") `And` (Role "buddy_list")
 
 manageHooks = scratchpadManageHook (StackSet.RationalRect 0.25 0.25 0.5 0.5)
