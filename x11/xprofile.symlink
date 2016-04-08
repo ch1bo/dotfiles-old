@@ -8,11 +8,6 @@ if [ $(which gnome-keyring-daemon 2> /dev/null) ]; then
   export SSH_AUTH_SOCK
 fi
 
-# Gnome settings daemon will set keyboard delay and rate
-if [ $(which gnome-settings-daemon 2> /dev/null) ]; then
-  gnome-settings-daemon &
-fi
-
 # No beeps
 xset -b
 
@@ -25,6 +20,7 @@ xset s 300
 xset r rate 200 60
 
 # Set a custom dpi
+# TODO(SN): only on FullHD 13"
 #xrandr --dpi 120
 
 # Load custom keybindings
