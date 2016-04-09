@@ -10,8 +10,6 @@
   up      = !$DOTFILES/bin/git-up
   reup    = !$DOTFILES/bin/git-reup
   dlm     = !$DOTFILES/bin/git-delete-local-merged
-[credential]
-  helper = GIT_CREDENTIAL_HELPER
 [color]
   diff = auto
   status = auto
