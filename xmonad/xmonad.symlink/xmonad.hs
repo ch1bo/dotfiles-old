@@ -65,7 +65,7 @@ keyBindings conf@(XConfig {XMonad.modMask = modMask}) = Map.fromList $
     , ((modMask, xK_n), refresh)
     -- Focus next/previous window in the stack
     , ((modMask, xK_Tab), windows StackSet.focusDown)
-    , ((modMask .|. shiftMask, xK_Tab), windows StackSet.focusUp)
+    , ((modMask .|. shiftMask, xK_Tab), windows StackSet.swapDown)
     -- Shrink/Expand the master area
     , ((modMask, xK_minus), sendMessage Shrink)
     , ((modMask, xK_equal), sendMessage Expand)
