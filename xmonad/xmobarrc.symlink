@@ -8,7 +8,7 @@ Config { font =         "xft:DejaVu Sans Mono:size=10:antialias=true"
        -- layout
        , sepChar =  "%"   -- delineator between plugin names and straight text
        , alignSep = "}{"  -- separator between left-right alignment
-       , template = "%StdinReader% }{ %battery% | %multicpu% | %coretemp% | %memory% | %wlp58s0wi% | %bright% | %kbd% | %date% "
+       , template = "%StdinReader% }{ %multicpu% | %coretemp% | %memory% | %wlp1s0wi% | %battery% | %bright% | %kbd% | %date% "
 
        -- general behavior
        , lowerOnStart =     True    -- send to bottom of window stack on start
@@ -32,7 +32,7 @@ Config { font =         "xft:DejaVu Sans Mono:size=10:antialias=true"
                               , "--high"     , "#E06C75"
                               ] 10
          -- cpu activity monitor
-         , Run MultiCpu       [ "--template" , "Cpu: <total0>%|<total1>%|<total2>%|<total3>%"
+         , Run MultiCpu       [ "--template" , "C: <total0>% <total1>% <total2>% <total3>%"
                               , "--Low"      , "50"         -- units: %
                               , "--High"     , "85"         -- units: %
                               , "--low"      , "#98C379"
@@ -40,7 +40,7 @@ Config { font =         "xft:DejaVu Sans Mono:size=10:antialias=true"
                               , "--high"     , "#E06C75"
                               ] 10
          -- cpu core temperature monitor
-         , Run CoreTemp       [ "--template" , "Temp: <core0>°C|<core1>°C"
+         , Run CoreTemp       [ "--template" , "T: <core0>°C <core1>°C <core2>°C <core3>°C"
                               , "--Low"      , "70"        -- units: °C
                               , "--High"     , "80"        -- units: °C
                               , "--low"      , "#98C379"
@@ -48,7 +48,7 @@ Config { font =         "xft:DejaVu Sans Mono:size=10:antialias=true"
                               , "--high"     , "#E06C75"
                               ] 50
          -- memory usage monitor
-         , Run Memory         [ "--template" ,"Mem: <usedratio>%"
+         , Run Memory         [ "--template" ,"M: <usedratio>%"
                               , "--Low"      , "30"        -- units: %
                               , "--High"     , "90"        -- units: %
                               , "--low"      , "#98C379"
@@ -56,7 +56,7 @@ Config { font =         "xft:DejaVu Sans Mono:size=10:antialias=true"
                               , "--high"     , "#E06C75"
                               ] 10
          -- battery monitor
-         , Run Battery        [ "--template" , "Batt: <acstatus>"
+         , Run Battery        [ "--template" , "B: <acstatus>"
                               , "--Low"      , "20"        -- units: %
                               , "--High"     , "60"        -- units: %
                               , "--low"      , "#E06C75"

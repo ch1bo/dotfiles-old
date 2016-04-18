@@ -101,6 +101,8 @@ keyBindings conf@(XConfig {XMonad.modMask = modMask}) = Map.fromList $
     , ((modMask, xK_s), scratchpadSpawnAction config)
     -- Launch browser
     , ((modMask, xK_w), spawn "x-www-browser")
+    -- Lock screen
+    , ((controlMask .|. mod1Mask, xK_l), spawn "slock")
     ]
     ++
     --
