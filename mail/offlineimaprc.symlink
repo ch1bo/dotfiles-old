@@ -1,0 +1,34 @@
+[general]
+maxsyncaccounts = 1
+accounts = KBee
+pythonfile = ~/.offlineimap/keyring.py
+
+[Account KBee]
+localrepository = KBeeLocal 
+remoterepository = KBeeRemote
+status_backend = sqlite
+autorefresh = 0.5
+quick = 10
+postsynchook = ~/.offlineimap/postsync
+
+[Repository KBeeRemote]
+type = IMAP
+remotehost = mail.kbee.lan
+remoteuser = nage_se
+remotepasseval = keyring.get_password('mail', 'nage_se')
+ssl = no
+keepalive = 60
+holdconnectionopen = yes
+
+[Repository KBeeLocal] 
+type = Maildir
+localfolders = ~/mail/KBee
+restoreatime = no
+
+[mbnames]
+enabled = yes
+filename = ~/.mutt/mailboxes
+header = "mailboxes "
+peritem = "+%(accountname)s/%(foldername)s"
+sep = " "
+footer = "\n"
