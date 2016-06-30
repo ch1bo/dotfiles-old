@@ -15,7 +15,7 @@ done
 config_files=(${config_files:#*/path.zsh})
 
 # add each topic folder to fpath so that they can add functions and completion scripts
-for topic_folder ($DOTFILES) if [ -d $topic_folder ]; then
+for topic_folder ($DOTFILES/*) if [ -d $topic_folder ]; then
   fpath=($topic_folder $fpath)
 fi
 
@@ -31,8 +31,8 @@ for file in ${config_files:#*/completion.zsh}; do
 done
 
 # initialize autocomplete here, otherwise functions won't be loaded
-autoload -U compinit
-compinit
+autoload -Uz compinit
+compinit -i
 
 # source completion files after autocomplete loads
 for file in ${(M)config_files:#*/completion.zsh}; do
