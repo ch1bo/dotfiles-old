@@ -51,7 +51,7 @@ URxvt.colorIT:  green_normal
 URxvt.colorBD:  #528BFF
 URxvt.colorUL:  blue_normal
 
-URxvt*font: xft:DejaVu Sans Mono:size=14:antialias=true
+URxvt*font: xft:DejaVu Sans mono:size=13:antialias=true
 URxvt*boldFont:
 URxvt*italicFont:
 URxvt*bolditalicFont:
@@ -77,7 +77,7 @@ URxvt.url-select.launcher: /usr/bin/xdg-open
 URxvt.url-select.autocopy: false
 URxvt.url-select.underline: false
 ! URLs
-URxvt.matcher.pattern.0: (\\w+:\/\/|www\.)[\\w-]+\\.[\\w./?&@#-=]*[\\w/-]
+URxvt.matcher.pattern.0: (\\w+:\/\/|www\.)[\\w-]+\\.[\\w./?&@#-=|]*[\\w/-]
 ! Absolute file paths
 URxvt.matcher.pattern.1: (\\/|~|\\.\\/|\\.\\.\\/)[\\w./?&@#-]+
 

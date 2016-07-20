@@ -47,6 +47,17 @@ prompt_git() {
   fi
 }
 
+# Docker: current DOCKER_MACHINE_NAME
+prompt_docker() {
+  if [[ -n $DOCKER_MACHINE_NAME ]]; then
+    local str=""
+    str+="%{$fg_bold[black]%}[%{$reset_color%}"
+    str+="%{$fg[yellow]%}$DOCKER_MACHINE_NAME%{$reset_color%}"
+    str+="%{$fg_bold[black]%}]%{$reset_color%}"
+    echo $str
+  fi
+}
+
 # Status:
 # - was there an error
 # - am I root
@@ -85,7 +96,7 @@ set_prompt() {
   if [[ -n $PROMPT_COLLAPSE ]]; then
     export PROMPT="$(prompt_dir)$(prompt_git)$(prompt_status)%{$fg[cyan]%} ➜ %{$reset_color%}"
   else
-    export PROMPT="$(prompt_context)$(prompt_dir)$(prompt_git)$(prompt_status)%{$fg[cyan]%} ➜ %{$reset_color%}"
+    export PROMPT="$(prompt_context)$(prompt_dir)$(prompt_git)$(prompt_docker)$(prompt_status)%{$fg[cyan]%} ➜ %{$reset_color%}"
   fi
   # SPROMPT='zsh: correct %F{red}%R%f to %F{green}%r%f [nyae]? '
 }
