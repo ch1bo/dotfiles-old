@@ -34,6 +34,7 @@ values."
      org
      php
      purescript
+     react
      spell-checking
      syntax-checking
      yaml
@@ -44,13 +45,12 @@ values."
    ;; configuration in `dotspacemacs/user-config'.
    dotspacemacs-additional-packages
    '(
+     base16-theme
+     editorconfig
+     flycheck-hdevtools
      )
    ;; A list of packages and/or extensions that will not be install and loaded.
-   dotspacemacs-excluded-packages
-   '(
-     js2-mode
-     js2-refactor
-     )
+   dotspacemacs-excluded-packages '()
    ;; If non-nil spacemacs will delete any orphan packages, i.e. packages that
    ;; are declared in a layer which is not a member of
    ;; the list `dotspacemacs-configuration-layers'. (default t)
@@ -103,13 +103,7 @@ values."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(spacemacs-dark
-                         spacemacs-light
-                         solarized-light
-                         solarized-dark
-                         leuven
-                         monokai
-                         zenburn)
+   dotspacemacs-themes '(base16-oceanicnext-dark material spacemacs-dark)
    ;; If non nil the cursor color matches the state color in GUI Emacs.
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
@@ -250,6 +244,8 @@ before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
   ;; Haskell
   (setq haskell-enable-ghc-mod-support nil)
+  (eval-after-load 'flycheck
+    '(require 'flycheck-hdevtools))
   )
 
 (defun dotspacemacs/user-config ()
@@ -261,6 +257,10 @@ explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
   (setq powerline-default-separator 'slant)
   (spaceline-compile)
+  ;; Disable spell checking by default
+  (setq spell-checking-enable-by-default nil)
+  ;; Global auto complete
+  (global-company-mode)
   ;; Preferred comment style
   (add-hook 'c-mode-common-hook
             (lambda ()
@@ -269,9 +269,26 @@ you should place your code here."
   ;; Git
   (setq git-magit-status-fullscreen t)
   (global-git-commit-mode t)
-  ;; Javascript
-  (setq js-indent-level 2)
-  ;; Use eslint from node_modules
+  ;; Haskell
+  (setq haskell-enable-hindent-style "gibiansky")
+  ;; Web development
+  (setq-default
+   ;; js2-mode
+   js2-basic-offset 2
+   ;; js-mode
+   js-indent-level 2
+   ;; web-mode
+   css-indent-offset 2
+   web-mode-markup-indent-offset 2
+   web-mode-css-indent-offset 2
+   web-mode-code-indent-offset 2
+   web-mode-attr-indent-offset 2)
+  (with-eval-after-load 'web-mode
+    (add-to-list 'web-mode-indentation-params '("lineup-args" . nil))
+    (add-to-list 'web-mode-indentation-params '("lineup-concats" . nil))
+    (add-to-list 'web-mode-indentation-params '("lineup-calls" . nil)))
+  ;; Hide js2-mode warnings/errors and use eslint from node_modules
+  (add-hook 'js2-mode-hook 'js2-mode-hide-warnings-and-errors)
   (add-hook 'flycheck-mode-hook
             (lambda ()
               (let* ((root (locate-dominating-file
