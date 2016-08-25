@@ -242,6 +242,8 @@ executes.
  This function is mostly useful for variables that need to be set
 before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
+  ;; Disable spell checking by default
+  (setq spell-checking-enable-by-default nil)
   ;; Haskell
   (setq haskell-enable-ghc-mod-support nil)
   (eval-after-load 'flycheck
@@ -257,8 +259,6 @@ explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
   (setq powerline-default-separator 'slant)
   (spaceline-compile)
-  ;; Disable spell checking by default
-  (setq spell-checking-enable-by-default nil)
   ;; Global auto complete
   (global-company-mode)
   ;; Preferred comment style
