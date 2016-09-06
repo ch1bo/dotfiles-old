@@ -1,7 +1,7 @@
-set spoolfile = "+kbee/INBOX"
-set postponed = "+kbee/Entw&APw-rfe"
-set record = "+kbee/Gesendete\ Objekte"
-set trash = "+kbee/Gel\&APY-schte\ Objekte"
+set spoolfile = "+franka/INBOX"
+set postponed = "+franka/Entw&APw-rfe"
+set record = "+franka/Gesendete\ Objekte"
+set trash = "+franka/Gel\&APY-schte\ Objekte"
 
 set realname = "Sebastian Nagel"
 set from = "sebastian.nagel@franka.de"
