@@ -2,10 +2,10 @@
 set header_cache = "~/.cache/mutt"
 set mbox_type=Maildir
 set folder = "~/mail"
-source "~/.mutt/mailboxes"
 
 ### Accounts
-source "~/.mutt/kbee"
+source "~/.mutt/mailboxes"
+source "~/.mutt/franka"
 
 ### Colors
 color hdrdefault blue black
@@ -37,6 +37,13 @@ set sidebar_sort=yes
 
 macro index \Cb "<enter-command>toggle sidebar_visible<enter>" "toggle sidebar"
 macro pager \Cb "<enter-command>toggle sidebar_visible<enter>" "toggle sidebar"
+
+### Misc settings
+set confirmappend=no
+bind index j next-entry
+bind index k previous-entry
+bind index \CF next-page
+bind index \CB previous-page
 
 # Ctrl-n, Ctrl-p to select next, previous folder.
 # Ctrl-o to open selected folder.

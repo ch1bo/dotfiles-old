@@ -1,0 +1,13 @@
+set spoolfile = "+kbee/INBOX"
+set postponed = "+kbee/Entw&APw-rfe"
+set record = "+kbee/Gesendete\ Objekte"
+set trash = "+kbee/Gel\&APY-schte\ Objekte"
+
+set realname = "Sebastian Nagel"
+set from = "sebastian.nagel@franka.de"
+set use_from = yes
+set smtp_url = smtp://mail.kbee.lan
+set ssl_starttls
+unset ssl_force_tls
+
+send-hook "~t @franka.de" set signature=~/.mutt/franka.sig

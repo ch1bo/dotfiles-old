@@ -1,17 +1,22 @@
 [general]
 maxsyncaccounts = 1
-accounts = KBee
+accounts = franka
 pythonfile = ~/.offlineimap/keyring.py
 
-[Account KBee]
-localrepository = KBeeLocal 
-remoterepository = KBeeRemote
+[Account franka]
+localrepository = franka-local
+remoterepository = franka-remote
 status_backend = sqlite
 autorefresh = 0.5
 quick = 10
 postsynchook = ~/.offlineimap/postsync
 
-[Repository KBeeRemote]
+[Repository franka-local]
+type = Maildir
+localfolders = ~/mail/franka
+restoreatime = no
+
+[Repository franka-remote]
 type = IMAP
 remotehost = mail.kbee.lan
 remoteuser = nage_se
@@ -19,11 +24,6 @@ remotepasseval = keyring.get_password('mail', 'nage_se')
 ssl = no
 keepalive = 60
 holdconnectionopen = yes
-
-[Repository KBeeLocal] 
-type = Maildir
-localfolders = ~/mail/KBee
-restoreatime = no
 
 [mbnames]
 enabled = yes
