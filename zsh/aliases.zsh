@@ -18,4 +18,3 @@ alias l="ls -CF"
 
 alias todos="grep -R 'TODO' . | wc -l"
 alias skype="apulse32 skype"
-alias hdevtools="stack exec --no-ghc-package-path hdevtools --"
