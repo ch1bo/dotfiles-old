@@ -1,5 +1,5 @@
 # Only my most used git commands
-alias gf="git fetch"
+alias gf="git fetch --prune"
 alias gg="git graph"
 alias gga="git graph --all"
 alias gd="git diff"
