@@ -10,4 +10,4 @@ set smtp_url = smtp://mail.kbee.lan
 set ssl_starttls
 unset ssl_force_tls
 
-send-hook "~t @franka.de" set signature=~/.mutt/franka.sig
+send-hook . set signature=~/.mutt/franka.sig
