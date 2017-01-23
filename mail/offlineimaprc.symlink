@@ -18,7 +18,7 @@ restoreatime = no
 
 [Repository franka-remote]
 type = IMAP
-remotehost = mail.kbee.lan
+remotehost = mail.franka.de
 remoteuser = nage_se
 remotepasseval = keyring.get_password('mail', 'nage_se')
 ssl = no

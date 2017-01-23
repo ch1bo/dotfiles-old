@@ -1,12 +1,12 @@
-set spoolfile = "+franka/INBOX"
-set postponed = "+franka/Entw&APw-rfe"
-set record = "+franka/Gesendete\ Objekte"
-set trash = "+franka/Gel\&APY-schte\ Objekte"
+set spoolfile = "+franka/Inbox"
+set postponed = "+franka/Drafts"
+set record = "+franka/Sent"
+set trash = "+franka/Trash"
 
 set realname = "Sebastian Nagel"
 set from = "sebastian.nagel@franka.de"
 set use_from = yes
-set smtp_url = smtp://mail.kbee.lan
+set smtp_url = smtp://mail.franka.de
 set ssl_starttls
 unset ssl_force_tls
 
