@@ -23,7 +23,7 @@ main = xmobar config >>= xmonad
 
 config = withNavigation2DConfig defaultNavigation2DConfig $
   defaultConfig { modMask = mod4Mask -- Super as modifier
-                , terminal = "x-terminal-emulator"
+                , terminal = "urxvt"
                 , focusFollowsMouse = True -- Focus on mouse enter
                 , clickJustFocuses = False -- Click 'into' window
                 , normalBorderColor = "#3E4451"
@@ -100,7 +100,7 @@ keyBindings conf@(XConfig {XMonad.modMask = modMask}) = Map.fromList $
     -- Show/hide scratchpad
     , ((modMask, xK_s), scratchpadSpawnAction config)
     -- Launch browser
-    , ((modMask, xK_w), spawn "x-www-browser")
+    , ((modMask, xK_w), spawn "chromium")
     -- Lock screen
     , ((controlMask .|. mod1Mask, xK_l), spawn "slock")
     ]
@@ -147,4 +147,8 @@ layouts = id
                               `And` (Not $ Role "CallWindow")
   pidgin = (ClassName "Pidgin") `And` (Role "buddy_list")
 
-manageHooks = scratchpadManageHook (StackSet.RationalRect 0.25 0.25 0.5 0.5)
+manageHooks = composeAll
+  [ scratchpadManageHook (StackSet.RationalRect 0.25 0.25 0.5 0.5)
+  , className =? "Gimp" --> doFloat
+  ]
+
