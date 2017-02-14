@@ -77,7 +77,7 @@ URxvt.url-select.launcher: /usr/bin/xdg-open
 URxvt.url-select.autocopy: false
 URxvt.url-select.underline: false
 ! URLs
-URxvt.matcher.pattern.0: (\\w+:\/\/|www\.)[\\w-]+\\.[\\w./?&@#-=|]*[\\w/-]
+URxvt.matcher.pattern.0: (\\w+:\/\/|www\.)[a-zA-Z0-9.:/?&@#-]*
 ! Absolute file paths
 URxvt.matcher.pattern.1: (\\/|~|\\.\\/|\\.\\.\\/)[\\w./?&@#-]+
 
