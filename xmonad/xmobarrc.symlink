@@ -32,7 +32,7 @@ Config { font =         "xft:DejaVu Sans Mono:size=10:antialias=true"
                               , "--high"     , "#E06C75"
                               ] 10
          -- cpu activity monitor
-         , Run MultiCpu       [ "--template" , "C: <total0>% <total1>% <total2>% <total3>%"
+         , Run MultiCpu       [ "--template" , "C: <total>%"
                               , "--Low"      , "50"         -- units: %
                               , "--High"     , "85"         -- units: %
                               , "--low"      , "#98C379"
@@ -40,7 +40,7 @@ Config { font =         "xft:DejaVu Sans Mono:size=10:antialias=true"
                               , "--high"     , "#E06C75"
                               ] 10
          -- cpu core temperature monitor
-         , Run CoreTemp       [ "--template" , "T: <core0>°C <core1>°C <core2>°C <core3>°C"
+         , Run CoreTemp       [ "--template" , "T: <core0>°C"
                               , "--Low"      , "70"        -- units: °C
                               , "--High"     , "80"        -- units: °C
                               , "--low"      , "#98C379"
