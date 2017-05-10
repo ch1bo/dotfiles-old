@@ -1,4 +1,4 @@
-set spoolfile = "+franka/Inbox"
+set spoolfile = "+franka/INBOX"
 set postponed = "+franka/Drafts"
 set record = "+franka/Sent"
 set trash = "+franka/Trash"

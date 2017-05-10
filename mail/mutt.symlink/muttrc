@@ -24,8 +24,8 @@ color tilde brightmagenta black
 color index blue black ~F
 color index red black "~N|~O"
 
-### Viewing HTML
 set mailcap_path  = ~/.mutt/mailcap
+mime_lookup application/octet-stream
 auto_view text/html
 alternative_order text/plain text/html
 
@@ -34,7 +34,6 @@ set sidebar_width=25
 set sidebar_visible=yes
 set sidebar_delim='|'
 set sidebar_sort=yes
-
 macro index \Cb "<enter-command>toggle sidebar_visible<enter>" "toggle sidebar"
 macro pager \Cb "<enter-command>toggle sidebar_visible<enter>" "toggle sidebar"
 
@@ -52,4 +51,4 @@ bind index,pager \CN sidebar-next
 bind index,pager \CO sidebar-open
 
 # Refresh mails using Ctrl-r
-bind index,pager \CR imap-fetch-mail
+bind index,pager \Cr imap-fetch-mail

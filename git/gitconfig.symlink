@@ -3,7 +3,7 @@
   email = sebastian.nagel@franka.de
 [alias]
   co      = checkout
-  graph   = log --graph --decorate --oneline
+  graph   = log --graph --oneline --decorate
   changelog = log --pretty=format:"%s" --no-merges
   count   = shortlog -sn
   wtf     = !$DOTFILES/bin/git-wtf
