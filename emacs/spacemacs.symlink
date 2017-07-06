@@ -31,6 +31,7 @@ values."
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
    '(
+     php
      auto-completion
      (c-c++ :variables
             c-c++-enable-clang-support t
@@ -44,15 +45,14 @@ values."
      javascript
      lua
      markdown
-     multiple-cursors
      org
      purescript
      react
      (shell-scripts :variables
+                    sh-basic-offset 2
                     sh-indentation 2)
      spell-checking
      syntax-checking
-     themes-megapack
      theming
      yaml
      )
@@ -62,6 +62,7 @@ values."
    ;; configuration in `dotspacemacs/user-config'.
    dotspacemacs-additional-packages
    '(
+     base16-theme
      editorconfig
      flycheck-hdevtools
      (flycheck-clang-tidy :location (recipe :fetcher github
@@ -140,9 +141,9 @@ values."
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
    dotspacemacs-themes '(
-                         smyx
+                         base16-solarflare
+                         base16-onedark
                          spacemacs-dark
-                         material
                          )
    ;; If non nil the cursor color matches the state color in GUI Emacs.
    dotspacemacs-colorize-cursor-according-to-state t
@@ -343,6 +344,8 @@ you should place your code here."
     "f" 'clang-format)
   (spacemacs/set-leader-keys-for-major-mode 'c++-mode
     "f" 'clang-format)
+  (add-hook 'c-mode-common-hook (lambda () (setq comment-start "// "
+                                                 comment-end "")))
   ;; Haskell
   (eval-after-load 'flycheck
     '(require 'flycheck-hdevtools))
@@ -377,9 +380,10 @@ you should place your code here."
   ;;           )
   ;; Custom theming
   (setq theming-modifications
-        '((smyx (region :background "#d8d8d8" :foreground "#515151")
-                (iedit-occurrence :inherit spacemacs-iedit-face)
-                )))
+        '((base16-solarflare (fringe :background nil)
+                             (iedit-occurrence :inherit spacemacs-iedit-face)
+                             )
+          ))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -395,9 +399,3 @@ you should place your code here."
  '(psc-ide-add-import-on-completion t t)
  '(psc-ide-rebuild-on-save nil t)
  '(rainbow-ansi-colors t))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
