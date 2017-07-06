@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 ansi_mappings=(
   Black
   Red

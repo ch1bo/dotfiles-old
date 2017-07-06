@@ -1,9 +1,9 @@
-Config { font =         "xft:DejaVu Sans Mono:size=10:antialias=true"
-       , bgColor =      "#282C34"
-       , fgColor =      "#ABB2BF"
+Config { font =         "xft:Source Code Pro:size=10:antialias=true"
+       , bgColor =      "#18262F"
+       , fgColor =      "#A6AFB8"
        , position =     Top
        , border =       BottomB
-       , borderColor =  "#528BFF"
+       , borderColor =  "#33B5E1"
 
        -- layout
        , sepChar =  "%"   -- delineator between plugin names and straight text
@@ -22,53 +22,53 @@ Config { font =         "xft:DejaVu Sans Mono:size=10:antialias=true"
        , commands =
          [ Run StdinReader
          -- wireless network information
-         , Run Wireless "wlp58s0" [ "--template", "<essid>" ] 10
+         , Run Wireless "wlp1s0" [ "--template", "<essid>" ] 10
          -- network activity monitor (dynamic interface resolution)
          , Run DynNetwork     [ "--template" , "<dev>: <tx>kB/s|<rx>kB/s"
                               , "--Low"      , "1000"       -- units: kB/s
                               , "--High"     , "5000"       -- units: kB/s
-                              , "--low"      , "#98C379"
-                              , "--normal"   , "#E5C07B"
-                              , "--high"     , "#E06C75"
+                              , "--low"      , "#7CC844"
+                              , "--normal"   , "#52CBB0"
+                              , "--high"     , "#EF5253"
                               ] 10
          -- cpu activity monitor
          , Run MultiCpu       [ "--template" , "C: <total>%"
                               , "--Low"      , "50"         -- units: %
                               , "--High"     , "85"         -- units: %
-                              , "--low"      , "#98C379"
-                              , "--normal"   , "#E5C07B"
-                              , "--high"     , "#E06C75"
+                              , "--low"      , "#7CC844"
+                              , "--normal"   , "#52CBB0"
+                              , "--high"     , "#EF5253"
                               ] 10
          -- cpu core temperature monitor
          , Run CoreTemp       [ "--template" , "T: <core0>°C"
                               , "--Low"      , "70"        -- units: °C
                               , "--High"     , "80"        -- units: °C
-                              , "--low"      , "#98C379"
-                              , "--normal"   , "#E5C07B"
-                              , "--high"     , "#E06C75"
+                              , "--low"      , "#7CC844"
+                              , "--normal"   , "#52CBB0"
+                              , "--high"     , "#EF5253"
                               ] 50
          -- memory usage monitor
          , Run Memory         [ "--template" ,"M: <usedratio>%"
                               , "--Low"      , "30"        -- units: %
                               , "--High"     , "90"        -- units: %
-                              , "--low"      , "#98C379"
-                              , "--normal"   , "#E5C07B"
-                              , "--high"     , "#E06C75"
+                              , "--low"      , "#7CC844"
+                              , "--normal"   , "#52CBB0"
+                              , "--high"     , "#EF5253"
                               ] 10
          -- battery monitor
          , Run Battery        [ "--template" , "B: <acstatus>"
                               , "--Low"      , "20"        -- units: %
                               , "--High"     , "60"        -- units: %
-                              , "--low"      , "#E06C75"
-                              , "--normal"   , "#E5C07B"
-                              , "--high"     , "#98C379"
+                              , "--low"      , "#EF5253"
+                              , "--normal"   , "#52CBB0"
+                              , "--high"     , "#7CC844"
                               , "--" -- battery specific options
                                         -- discharging status
                                         , "-o" , "<left>% (<timeleft>)"
                                         -- AC "on" status
-                                        , "-O" , "<fc=#E5C07B>Charging</fc>"
+                                        , "-O" , "<fc=#33B5E1>Charging</fc>"
                                         -- charged status
-                                        , "-i" , "<fc=#98C379>Charged</fc>"
+                                        , "-i" , "<fc=#52CBB0>Charged</fc>"
                               ] 50
          -- time and date indicator
          --   (%F = y-m-d date, %a = day of week, %T = h:m:s time)
