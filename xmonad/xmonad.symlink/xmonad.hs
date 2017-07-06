@@ -26,8 +26,8 @@ config = withNavigation2DConfig defaultNavigation2DConfig $
                 , terminal = "urxvt"
                 , focusFollowsMouse = True -- Focus on mouse enter
                 , clickJustFocuses = False -- Click 'into' window
-                , normalBorderColor = background
-                , focusedBorderColor = blue
+                , normalBorderColor = base01
+                , focusedBorderColor = base0D
                 , borderWidth = 2
                 , keys = keyBindings
                 , layoutHook = layouts
@@ -37,10 +37,10 @@ config = withNavigation2DConfig defaultNavigation2DConfig $
 xmobar = statusBar "xmobar" pp toggleStrutsKey
  where
   -- Pretty print xmonad status
-  pp = defaultPP { ppCurrent = xmobarColor blue "" . wrap "[" "]"
-                 , ppTitle   = xmobarColor blue  "" . shorten 40
+  pp = defaultPP { ppCurrent = xmobarColor base0D "" . wrap "[" "]"
+                 , ppTitle   = xmobarColor base0D "" . shorten 40
                  , ppVisible = wrap "(" ")"
-                 , ppUrgent  = xmobarColor magenta ""
+                 , ppUrgent  = xmobarColor base0F ""
                  }
   -- Toggle display of top bar
   toggleStrutsKey XConfig {XMonad.modMask = modMask} = (modMask, xK_b)
@@ -153,6 +153,6 @@ manageHooks = composeAll
   ]
 
 -- Colors: base16-solar-flare
-background = "#18262F"
-blue = "#33B5E1"
-magenta = "#528BFF"
+base01 = "#222E38"
+base0D = "#33B5E1"
+base0F = "#528BFF"

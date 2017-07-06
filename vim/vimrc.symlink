@@ -18,6 +18,7 @@ set tabstop=2
 set expandtab
 
 " Syntax highlighting and autoindent
+let base16colorspace=256
 colorscheme base16-solar-flare
 syntax on
 filetype plugin indent on
