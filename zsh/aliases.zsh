@@ -15,6 +15,7 @@ fi
 alias ll="ls -alhF"
 alias la="ls -A"
 alias l="ls -CF"
+alias vi="vim"
 alias rgrep="grep -R --color"
 alias todos="grep -R 'TODO' . | wc -l"
 alias skype="apulse32 skype"
