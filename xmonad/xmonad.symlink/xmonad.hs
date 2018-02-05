@@ -3,7 +3,7 @@
 import Data.Ratio ((%))
 import System.Exit (ExitCode(..), exitWith)
 import XMonad hiding (config)
-import XMonad.Actions.Navigation2D (withNavigation2DConfig, defaultNavigation2DConfig, windowGo, windowSwap, switchLayer)
+import XMonad.Actions.Navigation2D (withNavigation2DConfig, defaultNavigation2DConfig, windowGo, windowSwap, switchLayer, screenGo)
 import XMonad.Hooks.DynamicLog (statusBar, PP(..), defaultPP, xmobarColor, wrap, shorten)
 import XMonad.Layout.Spacing (spacing)
 import XMonad.Layout.Gaps (gaps)
@@ -91,6 +91,9 @@ keyBindings conf@(XConfig {XMonad.modMask = modMask}) = Map.fromList $
     , ((modMask .|. controlMask, xK_h), sendMessage MirrorExpand)
     , ((modMask .|. controlMask, xK_j), sendMessage Expand)
     , ((modMask .|. controlMask, xK_k), sendMessage Shrink)
+    -- Directional navigation of screens
+    , ((modMask, xK_grave), screenGo L True)
+    , ((modMask, xK_BackSpace), screenGo R True)
     -- Toggle maximize
     , ((modMask, xK_m), withFocused (sendMessage . maximizeRestore))
     -- Toggle smart borders on layout
@@ -112,14 +115,6 @@ keyBindings conf@(XConfig {XMonad.modMask = modMask}) = Map.fromList $
     [((m .|. modMask, k), windows $ f i)
         | (i, k) <- zip (XMonad.workspaces conf) [xK_1 .. xK_9]
         , (f, m) <- [(StackSet.greedyView, 0), (StackSet.shift, shiftMask)]]
-    ++
-    --
-    -- mod-{grave,BackSpace}, Switch to physical/Xinerama screens 1 or 2
-    -- mod-shift-{grave,BackSpace}, Move client to screen 1, 2
-    --
-    [((m .|. modMask, key), screenWorkspace sc >>= flip whenJust (windows . f))
-        | (key, sc) <- zip [xK_grave, xK_BackSpace] [0..]
-        , (f, m) <- [(StackSet.view, 0), (StackSet.shift, shiftMask)]]
 
 -- Layout transformer to apply gap and spacing to layouts via MultiToggle
 data EXPLODE = EXPLODE deriving (Read, Show, Eq, Typeable)
