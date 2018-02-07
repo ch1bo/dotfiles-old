@@ -1,6 +1,6 @@
 [user]
   name = Sebastian Nagel
-  email = sebastian.nagel@franka.de
+  email = sebastian.nagel@ncoding.at
 [alias]
   co      = checkout
   graph   = log --graph --oneline --decorate
