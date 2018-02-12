@@ -510,6 +510,23 @@ before packages are loaded."
         )
   ;; File extension -> mode association
   (add-to-list 'auto-mode-alist '("\\.mc\\'" . java-mode))
+  ;; Inline css on org html export
+  (add-hook 'org-export-before-processing-hook
+            (lambda (exporter)
+              (when (eq exporter 'html)
+                (let* ((dir (ignore-errors (file-name-directory (buffer-file-name))))
+                       (path (concat dir "style.css"))
+                       (homestyle (or (null dir) (null (file-exists-p path))))
+                       (final (if homestyle "~/.dotfiles/emacs/org-style.css" path)))
+                  (setq org-html-head-include-default-style nil)
+                  (setq org-html-head (concat
+                                       "<style type=\"text/css\">\n"
+                                       "<!--/*--><![CDATA[/*><!--*/\n"
+                                       (with-temp-buffer
+                                         (insert-file-contents final)
+                                         (buffer-string))
+                                       "/*]]>*/-->\n"
+                                       "</style>\n"))))))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -519,7 +536,14 @@ before packages are loaded."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(evil-want-Y-yank-to-eol t)
+ '(ansi-color-names-vector
+   ["#18262f" "#ef5253" "#7cc844" "#e4b51c" "#33b5e1" "#a363d5" "#33b5e1" "#a6afb8"])
+ '(ansi-term-color-vector
+   [unspecified "#18262f" "#ef5253" "#7cc844" "#e4b51c" "#33b5e1" "#a363d5" "#33b5e1" "#a6afb8"])
+ '(custom-safe-themes
+   (quote
+    ("87d46d0ad89557c616d04bef34afd191234992c4eb955ff3c60c6aa3afc2e5cc" default)))
+ '(evil-want-Y-yank-to-eol nil)
  '(magit-fetch-arguments (quote ("--prune")))
  '(magit-log-arguments (quote ("--graph" "--color" "--decorate" "-n256")))
  '(psc-ide-add-import-on-completion t t)
@@ -535,12 +559,21 @@ This function is called at the very end of Spacemacs initialization."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(ansi-color-names-vector
+   ["#18262f" "#ef5253" "#7cc844" "#e4b51c" "#33b5e1" "#a363d5" "#33b5e1" "#a6afb8"])
+ '(ansi-term-color-vector
+   [unspecified "#18262f" "#ef5253" "#7cc844" "#e4b51c" "#33b5e1" "#a363d5" "#33b5e1" "#a6afb8"])
+ '(custom-safe-themes
+   (quote
+    ("87d46d0ad89557c616d04bef34afd191234992c4eb955ff3c60c6aa3afc2e5cc" default)))
  '(evil-want-Y-yank-to-eol nil)
  '(magit-fetch-arguments (quote ("--prune")))
  '(magit-log-arguments (quote ("--graph" "--color" "--decorate" "-n256")))
  '(package-selected-packages
    (quote
     (yasnippet-snippets yaml-mode ws-butler winum web-mode web-beautify volatile-highlights vi-tilde-fringe uuidgen toc-org tide typescript-mode tagedit symon string-inflection spaceline-all-the-icons all-the-icons memoize spaceline powerline smeargle slim-mode scss-mode sass-mode restart-emacs realgud test-simple loc-changes load-relative rainbow-mode rainbow-identifiers rainbow-delimiters pug-mode psci purescript-mode psc-ide popwin phpunit phpcbf php-extras php-auto-yasnippets persp-mode pcre2el password-generator paradox spinner overseer orgit org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-mime org-download org-bullets org-brain open-junk-file nginx-mode neotree nameless move-text mmm-mode markdown-toc markdown-mode magit-gitflow macrostep lorem-ipsum livid-mode skewer-mode linum-relative link-hint less-css-mode json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc intero insert-shebang indent-guide impatient-mode simple-httpd hungry-delete htmlize hlint-refactor hl-todo hindent highlight-parentheses highlight-numbers parent-mode highlight-indentation helm-themes helm-swoop helm-rtags helm-purpose window-purpose imenu-list helm-projectile helm-mode-manager helm-make helm-hoogle helm-gitignore request helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag haskell-snippets haml-mode google-translate google-c-style golden-ratio godoctor go-tag go-rename go-guru go-eldoc gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md fuzzy flyspell-correct-helm flyspell-correct flycheck-rtags flycheck-pos-tip pos-tip flycheck-hdevtools flycheck-haskell flycheck-clang-tidy flycheck-bashate flx-ido flx fish-mode fill-column-indicator fancy-battery eyebrowse expand-region evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-org evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit magit magit-popup git-commit ghub let-alist with-editor evil-lisp-state evil-lion evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-cleverparens smartparens paredit evil-args evil-anzu anzu eval-sexp-fu highlight emmet-mode elisp-slime-nav editorconfig dumb-jump drupal-mode disaster define-word dante lcr flycheck counsel-projectile projectile counsel swiper ivy pkg-info epl company-web web-completion-data company-tern dash-functional tern company-statistics company-shell company-rtags rtags company-php ac-php-core xcscope php-mode company-lua lua-mode f s company-go go-mode company-ghci company-ghc ghc haskell-mode company-cabal company-c-headers company column-enforce-mode color-identifiers-mode dash coffee-mode cmm-mode clean-aindent-mode clang-format centered-cursor-mode base16-theme auto-yasnippet yasnippet auto-highlight-symbol auto-dictionary auto-compile packed aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line helm avy helm-core ac-ispell auto-complete popup which-key use-package org-plus-contrib hydra font-lock+ exec-path-from-shell evil goto-chg undo-tree diminish bind-map bind-key async)))
+=======
+    (yasnippet-snippets yaml-mode ws-butler winum web-mode web-beautify volatile-highlights vi-tilde-fringe uuidgen toc-org tide typescript-mode tagedit symon string-inflection spaceline-all-the-icons all-the-icons memoize spaceline powerline smeargle slim-mode scss-mode sass-mode restart-emacs realgud test-simple loc-changes load-relative rainbow-mode rainbow-identifiers rainbow-delimiters pug-mode psci purescript-mode psc-ide popwin phpunit phpcbf php-extras php-auto-yasnippets persp-mode pcre2el password-generator paradox spinner overseer orgit org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-mime org-download org-bullets org-brain open-junk-file nginx-mode neotree nameless move-text mmm-mode markdown-toc markdown-mode magit-gitflow macrostep lorem-ipsum livid-mode skewer-mode linum-relative link-hint which-key use-package org-plus-contrib less-css-mode json-mode js2-refactor js-doc intero insert-shebang indent-guide impatient-mode hydra hungry-delete hlint-refactor hl-todo hindent highlight-parentheses highlight-numbers highlight-indentation helm-themes helm-swoop helm-rtags helm-purpose helm-projectile helm-mode-manager helm-make helm-hoogle helm-gitignore helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag haskell-snippets haml-mode google-translate google-c-style golden-ratio godoctor go-tag go-rename go-guru go-eldoc gnuplot gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md fuzzy font-lock+ flyspell-correct-helm flycheck-rtags flycheck-pos-tip flycheck-hdevtools flycheck-haskell flycheck-clang-tidy flycheck-bashate flx-ido fish-mode fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-org evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-cleverparens evil-args evil-anzu eval-sexp-fu emmet-mode elisp-slime-nav editorconfig dumb-jump drupal-mode disaster diminish define-word dante counsel-projectile company-web company-tern company-statistics company-shell company-rtags company-php company-lua company-go company-ghci company-ghc company-cabal company-c-headers column-enforce-mode color-identifiers-mode coffee-mode cmm-mode clean-aindent-mode clang-format centered-cursor-mode base16-theme auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell)))
  '(psc-ide-add-import-on-completion t t)
  '(psc-ide-rebuild-on-save nil t)
  '(rainbow-ansi-colors t))
@@ -549,6 +582,11 @@ This function is called at the very end of Spacemacs initialization."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(fringe ((t (:background nil))))
- '(iedit-occurrence ((t (:inherit spacemacs-iedit-face)))))
+ )
 )
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
