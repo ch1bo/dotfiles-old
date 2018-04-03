@@ -52,9 +52,9 @@ keyBindings conf@(XConfig {XMonad.modMask = modMask}) = Map.fromList $
     , ((modMask .|. shiftMask, xK_r), spawn "xmonad --recompile; xmonad --restart")
     -- Launch terminal
     , ((modMask, xK_Return), spawn $ XMonad.terminal conf)
-    -- Launch dmenu
-    , ((modMask, xK_p), spawn "dmenu_run")
-    , ((modMask .|. shiftMask, xK_p), spawn "dmenu_desktop")
+    -- Launch rofi
+    , ((modMask, xK_p), spawn "rofi -show run")
+    , ((modMask .|. shiftMask, xK_p), spawn "rofi -show drun")
     -- Close focused window
     , ((modMask, xK_q), kill)
     -- Rotate through the available layout algorithms
