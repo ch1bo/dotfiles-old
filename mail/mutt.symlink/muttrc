@@ -52,3 +52,6 @@ bind index,pager \CO sidebar-open
 
 # Refresh mails using Ctrl-r
 bind index,pager \Cr imap-fetch-mail
+
+# Open attachements using mailcap by default
+bind attach <return> view-mailcap
