@@ -1,5 +1,6 @@
 # Config for command line fuzzy finder fzf (https://github.com/junegunn/fzf)
 export FZF_DEFAULT_COMMAND="ag -l -g ''"
+export FZF_DEFAULT_OPTS="--height=40% --reverse"
 local fzfroot="$DOTFILES/fzf/fzf"
 
 # Man path
@@ -8,7 +9,7 @@ if [[ ! "$MANPATH" =~ "$fzfroot/man" && -d "$fzfroot/man" ]]; then
 fi
 
 # Auto-completion
-#[[ $- =$HOME i ]] && source "$HOME/.fzf/shell/completion.zsh"
+[[ $- == *i* ]] && source "$fzfroot/shell/completion.zsh" 2> /dev/null
 
 # Key bindings
 source "$fzfroot/shell/key-bindings.zsh"
@@ -17,7 +18,7 @@ bindkey '^G' fzf-cd-widget
 # z (https://github.com/rupa/z) as source for fzf (only if available)
 fzf-z-widget() {
   if type "z" > /dev/null; then
-    cd "$(echo $(z -t -l | cut -d' ' -f2- | tr -d ' ' | fzf --tac +s -e))"
+    cd "$(echo $(z -t -l | cut -d' ' -f2- | tr -d ' ' | fzf --tac))"
     zle reset-prompt
   fi
 }
