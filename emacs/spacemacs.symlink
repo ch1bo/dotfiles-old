@@ -29,8 +29,7 @@ This function should only modify configuration layer settings."
    dotspacemacs-configuration-layer-path '()
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '(
-     php
+   '(sml
      auto-completion
      (c-c++ :variables
             c-basic-offset 2
@@ -45,7 +44,13 @@ This function should only modify configuration layer settings."
      javascript
      lua
      markdown
+     (mu4e :variables
+           mu4e-installation-path "/usr/share/emacs/site-lisp"
+           mu4e-enable-mode-line t
+           mu4e-maildirs-extension t
+           )
      org
+     php
      purescript
      react
      (shell-scripts :variables
@@ -183,8 +188,8 @@ It should only modify the values of Spacemacs settings."
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font, or prioritized list of fonts. `powerline-scale' allows to
    ;; quickly tweak the mode-line size to make separators look not too crappy.
-   dotspacemacs-default-font '("Source Code Pro"
-                               :size 15
+   dotspacemacs-default-font '("Inconsolata"
+                               :size 17
                                :weight normal
                                :width normal)
 
@@ -444,6 +449,30 @@ Put your configuration code here, except for variables that should be set
 before packages are loaded."
   (setq powerline-default-separator 'slant)
   (spaceline-compile)
+  ;; Mail using mu4e
+  (setq user-full-name "Sebastian Nagel"
+        user-mail-address "sebastian.nagel@franka.de"
+        mu4e-maildir "~/mail"
+        mu4e-trash-folder "/franka/Trash"
+        mu4e-refile-folder  "/franka/Archive"
+        mu4e-sent-folder "/franka/Sent"
+        mu4e-drafts-folder "/franka/Drafts"
+        mu4e-compose-signature (with-temp-buffer
+                                 (insert-file-contents "~/.dotfiles/mail/franka.sig")
+                                 (buffer-string))
+        mu4e-get-mail-command "offlineimap -o"
+        mu4e-html2text-command "w3m -I utf-8 -T text/html"
+        mu4e-confirm-quit nil
+        mu4e-update-interval nil
+        mu4e-view-show-images t
+        mu4e-view-show-addresses t
+        smtpmail-smtp-server "mail.franka.de"
+        smtpmail-smtp-service 25
+        smtpmail-stream-type 'starttls
+        )
+  (setq mu4e-maildir-shortcuts
+        '(("/franka/INBOX" . ?i)
+          ))
   ;; Git
   (setq git-magit-status-fullscreen t)
   (global-git-commit-mode t)
@@ -581,10 +610,11 @@ This function is called at the very end of Spacemacs initialization."
  '(magit-log-arguments (quote ("--graph" "--color" "--decorate" "-n256")))
  '(package-selected-packages
    (quote
-    (vimrc-mode helm-gtags ggtags dactyl-mode counsel-gtags evil-magit yasnippet-snippets yaml-mode ws-butler winum which-key web-mode web-beautify volatile-highlights vi-tilde-fringe uuidgen use-package toc-org tide tagedit symon string-inflection spaceline-all-the-icons smeargle slim-mode scss-mode sass-mode restart-emacs realgud rainbow-mode rainbow-identifiers rainbow-delimiters pug-mode psci psc-ide popwin phpunit phpcbf php-extras php-auto-yasnippets persp-mode pcre2el password-generator paradox overseer orgit org-projectile org-present org-pomodoro org-mime org-download org-bullets org-brain open-junk-file nginx-mode neotree nameless move-text mmm-mode markdown-toc magit-gitflow macrostep lorem-ipsum livid-mode linum-relative link-hint less-css-mode json-mode js2-refactor js-doc intero insert-shebang indent-guide impatient-mode hungry-delete hlint-refactor hl-todo hindent highlight-parentheses highlight-numbers highlight-indentation helm-themes helm-swoop helm-rtags helm-purpose helm-projectile helm-mode-manager helm-make helm-hoogle helm-gitignore helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag haskell-snippets google-translate google-c-style golden-ratio godoctor go-tag go-rename go-guru go-eldoc gnuplot gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md fuzzy font-lock+ flyspell-correct-helm flycheck-rtags flycheck-pos-tip flycheck-hdevtools flycheck-haskell flycheck-clang-tidy flycheck-bashate flx-ido fish-mode fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-org evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-cleverparens evil-args evil-anzu eval-sexp-fu emmet-mode elisp-slime-nav editorconfig dumb-jump drupal-mode disaster diminish define-word dante counsel-projectile company-web company-tern company-statistics company-shell company-rtags company-php company-lua company-go company-ghci company-ghc company-cabal company-c-headers column-enforce-mode color-identifiers-mode coffee-mode cmm-mode clean-aindent-mode clang-format centered-cursor-mode base16-theme auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell)))
+    (ob-sml sml-mode mu4e-maildirs-extension mu4e-alert ht helm-mu vimrc-mode helm-gtags ggtags dactyl-mode counsel-gtags evil-magit yasnippet-snippets yaml-mode ws-butler winum which-key web-mode web-beautify volatile-highlights vi-tilde-fringe uuidgen use-package toc-org tide tagedit symon string-inflection spaceline-all-the-icons smeargle slim-mode scss-mode sass-mode restart-emacs realgud rainbow-mode rainbow-identifiers rainbow-delimiters pug-mode psci psc-ide popwin phpunit phpcbf php-extras php-auto-yasnippets persp-mode pcre2el password-generator paradox overseer orgit org-projectile org-present org-pomodoro org-mime org-download org-bullets org-brain open-junk-file nginx-mode neotree nameless move-text mmm-mode markdown-toc magit-gitflow macrostep lorem-ipsum livid-mode linum-relative link-hint less-css-mode json-mode js2-refactor js-doc intero insert-shebang indent-guide impatient-mode hungry-delete hlint-refactor hl-todo hindent highlight-parentheses highlight-numbers highlight-indentation helm-themes helm-swoop helm-rtags helm-purpose helm-projectile helm-mode-manager helm-make helm-hoogle helm-gitignore helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag haskell-snippets google-translate google-c-style golden-ratio godoctor go-tag go-rename go-guru go-eldoc gnuplot gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md fuzzy font-lock+ flyspell-correct-helm flycheck-rtags flycheck-pos-tip flycheck-hdevtools flycheck-haskell flycheck-clang-tidy flycheck-bashate flx-ido fish-mode fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-org evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-cleverparens evil-args evil-anzu eval-sexp-fu emmet-mode elisp-slime-nav editorconfig dumb-jump drupal-mode disaster diminish define-word dante counsel-projectile company-web company-tern company-statistics company-shell company-rtags company-php company-lua company-go company-ghci company-ghc company-cabal company-c-headers column-enforce-mode color-identifiers-mode coffee-mode cmm-mode clean-aindent-mode clang-format centered-cursor-mode base16-theme auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell)))
  '(psc-ide-add-import-on-completion t t)
  '(psc-ide-rebuild-on-save nil t)
- '(rainbow-ansi-colors t))
+ '(rainbow-ansi-colors t)
+ '(send-mail-function (quote smtpmail-send-it)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

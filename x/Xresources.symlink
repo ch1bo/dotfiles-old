@@ -46,7 +46,7 @@ URxvt.colorIT:  base0D
 URxvt.colorBD:  base0E
 URxvt.colorUL:  base0F
 
-URxvt.font: xft:Source Code Pro:size=13:antialias=true
+URxvt.font: xft:Inconsolata:size=16:antialias=true
 URxvt.boldFont:
 URxvt.italicFont:
 URxvt.bolditalicFont:

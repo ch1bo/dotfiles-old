@@ -10,4 +10,4 @@ set smtp_url = smtp://mail.franka.de
 set ssl_starttls
 unset ssl_force_tls
 
-send-hook . set signature=~/.mutt/franka.sig
+send-hook . set signature=~/.dotfiles/mail/franka.sig
