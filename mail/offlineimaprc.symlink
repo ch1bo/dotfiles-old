@@ -9,6 +9,7 @@ remoterepository = franka-remote
 status_backend = sqlite
 autorefresh = 0.5
 quick = 10
+postsynchook = mu index --maildir ~/mail
 
 [Repository franka-local]
 type = Maildir

@@ -473,6 +473,13 @@ before packages are loaded."
   (setq mu4e-maildir-shortcuts
         '(("/franka/INBOX" . ?i)
           ))
+  ;; Kill mu4e and re-alert new mails
+  (defun refresh-mu4e-alert-mode-line ()
+    (interactive)
+    (mu4e~proc-kill)
+    (mu4e-alert-enable-mode-line-display)
+    )
+  (run-with-timer 0 60 'refresh-mu4e-alert-mode-line)
   ;; Git
   (setq git-magit-status-fullscreen t)
   (global-git-commit-mode t)
