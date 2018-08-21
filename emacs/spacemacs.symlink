@@ -461,9 +461,7 @@ before packages are loaded."
                                  (insert-file-contents "~/.dotfiles/mail/franka.sig")
                                  (buffer-string))
         mu4e-get-mail-command "offlineimap -o"
-        mu4e-html2text-command "w3m -I utf-8 -T text/html"
-        mu4e-confirm-quit nil
-        mu4e-update-interval nil
+        mu4e-update-interval 60
         mu4e-view-show-images t
         mu4e-view-show-addresses t
         smtpmail-smtp-server "mail.franka.de"
@@ -473,13 +471,18 @@ before packages are loaded."
   (setq mu4e-maildir-shortcuts
         '(("/franka/INBOX" . ?i)
           ))
-  ;; Kill mu4e and re-alert new mails
-  (defun refresh-mu4e-alert-mode-line ()
-    (interactive)
-    (mu4e~proc-kill)
-    (mu4e-alert-enable-mode-line-display)
-    )
-  (run-with-timer 0 60 'refresh-mu4e-alert-mode-line)
+  (setq mu4e-bookmarks
+        `(("flag:unread AND NOT flag:trashed" "Unread messages" ?u)
+          ("date:today..now" "Today's messages" ?t)
+          ("flag:flagged" "Flagged messages" ?f)
+          ))
+  ;; Use shr to render messages (preliminary until newer mu)
+  (defun mu4e-render-html-message ()
+    (let ((dom (libxml-parse-html-region (point-min) (point-max))))
+      (erase-buffer)
+      (shr-insert-document dom)
+      (goto-char (point-min))))
+  (setq mu4e-html2text-command 'mu4e-render-html-message)
   ;; Git
   (setq git-magit-status-fullscreen t)
   (global-git-commit-mode t)
