@@ -1,7 +1,7 @@
 export DOTFILES=$HOME/.dotfiles
 
 typeset -U path
-path=(./bin $HOME/.local/bin $DOTFILES/bin $path)
+path=($HOME/.local/bin $DOTFILES/bin $path)
 # source all path.zsh files
 local path_files=($DOTFILES/*/path.zsh)
 for file in $path_files; do
