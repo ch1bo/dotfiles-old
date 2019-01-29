@@ -58,6 +58,17 @@ prompt_docker() {
   fi
 }
 
+# AWS: current AWS_PROFILE
+prompt_aws() {
+  if [[ -n $AWS_PROFILE ]]; then
+    local str=""
+    str+="%{$fg_bold[black]%}[%{$reset_color%}"
+    str+="%{$fg[yellow]%}$AWS_PROFILE%{$reset_color%}"
+    str+="%{$fg_bold[black]%}]%{$reset_color%}"
+    echo $str
+  fi
+}
+
 # Status:
 # - was there an error
 # - am I root
@@ -96,7 +107,7 @@ set_prompt() {
   if [[ -n $PROMPT_COLLAPSE ]]; then
     export PROMPT="$(prompt_dir)$(prompt_git)$(prompt_status)%{$fg[cyan]%} ➜ %{$reset_color%}"
   else
-    export PROMPT="$(prompt_context)$(prompt_dir)$(prompt_git)$(prompt_docker)$(prompt_status)%{$fg[cyan]%} ➜ %{$reset_color%}"
+    export PROMPT="$(prompt_context)$(prompt_dir)$(prompt_git)$(prompt_docker)$(prompt_aws)$(prompt_status)%{$fg[cyan]%} ➜ %{$reset_color%}"
   fi
   # SPROMPT='zsh: correct %F{red}%R%f to %F{green}%r%f [nyae]? '
 }
