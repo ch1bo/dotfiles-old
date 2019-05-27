@@ -545,15 +545,32 @@ before packages are loaded."
   ;; Default browser
   (setq browse-url-browser-function 'browse-url-chromium)
   ;; Org
-  (setq org-directory "~/documents/org"
-        org-default-notes-file (concat org-directory "/notes.org")
-        org-agenda-files (quote ("~/documents/org/notes.org"))
+  (defun org-focus-forward-element ()
+    (interactive "@")
+    (org-reveal t)
+    (org-forward-element)
+    (hide-other))
+  (defun org-focus-backward-element ()
+    (interactive "@")
+    (org-reveal t)
+    (org-backward-element)
+    (hide-other))
+  (spacemacs/set-leader-keys-for-major-mode 'org-mode
+    "ff" 'hide-other)
+  (spacemacs/set-leader-keys-for-major-mode 'org-mode
+    "fr" 'org-reveal)
+  (spacemacs/set-leader-keys-for-major-mode 'org-mode
+    "fj" 'org-focus-forward-element)
+  (spacemacs/set-leader-keys-for-major-mode 'org-mode
+    "fk" 'org-focus-backward-element)
+  (setq org-directory (concat user-home-directory "documents/org/")
+        org-default-notes-file (concat org-directory "notes.org")
+        org-agenda-files (list org-directory)
         org-capture-templates
-        '(("t" "Todo" entry (file+headline "notes.org" "Tasks") "* TODO %?\n  %i\n %a")
-          ("m" "Meeting" entry (file+headline "notes.org" "Meetings") "* %?\n %i\n %a")
+        '(("t" "Todo" entry (file+headline "notes.org" "Tasks") "* TODO %?\nSCHEDULED: %(org-insert-time-stamp (org-read-date nil t \"+0d\"))\n%a")
+          ("m" "Meeting" entry (file+headline "notes.org" "Meetings") "* %?\n  #+DATE: %(org-insert-time-stamp (org-read-date nil t \"+0d\"))")
+
           ))
-  ;; File extension -> mode association
-  (add-to-list 'auto-mode-alist '("\\.mc\\'" . java-mode))
   ;; Inline css on org html export
   (add-hook 'org-export-before-processing-hook
             (lambda (exporter)
