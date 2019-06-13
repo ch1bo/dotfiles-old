@@ -32,6 +32,7 @@ xset r rate 200 60
 #xrandr --output eDP1 --off --output DP1 --output DP2 --right-of DP1
 
 # Load custom keybindings
+xmodmap $HOME/.xmodmaprc
 xbindkeys
 
 # Load colors and settings
