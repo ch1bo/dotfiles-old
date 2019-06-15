@@ -1,9 +1,9 @@
 Config { font =         "xft:Source Code Pro:size=10:antialias=true"
-       , bgColor =      "#18262F"
-       , fgColor =      "#A6AFB8"
+       , bgColor =      "#1b2b34"
+       , fgColor =      "#c0c5ce"
        , position =     Top
        , border =       BottomB
-       , borderColor =  "#33B5E1"
+       , borderColor =  "#6699cc"
 
        -- layout
        , sepChar =  "%"   -- delineator between plugin names and straight text
@@ -25,44 +25,44 @@ Config { font =         "xft:Source Code Pro:size=10:antialias=true"
          , Run DynNetwork     [ "--template" , "<dev>: <tx>kB/s|<rx>kB/s"
                               , "--Low"      , "1000"       -- units: kB/s
                               , "--High"     , "5000"       -- units: kB/s
-                              , "--low"      , "#7CC844"
-                              , "--normal"   , "#52CBB0"
-                              , "--high"     , "#EF5253"
+                              , "--low"      , "#99c794"
+                              , "--normal"   , "#5fb3b3"
+                              , "--high"     , "#ec5f67"
                               ] 10
          , Run MultiCpu       [ "--template" , "C: <total>%"
                               , "--Low"      , "50"         -- units: %
                               , "--High"     , "85"         -- units: %
-                              , "--low"      , "#7CC844"
-                              , "--normal"   , "#52CBB0"
-                              , "--high"     , "#EF5253"
+                              , "--low"      , "#99c794"
+                              , "--normal"   , "#5fb3b3"
+                              , "--high"     , "#ec5f67"
                               ] 10
          , Run CoreTemp       [ "--template" , "T: <core0>°C"
                               , "--Low"      , "70"        -- units: °C
                               , "--High"     , "80"        -- units: °C
-                              , "--low"      , "#7CC844"
-                              , "--normal"   , "#52CBB0"
-                              , "--high"     , "#EF5253"
+                              , "--low"      , "#99c794"
+                              , "--normal"   , "#5fb3b3"
+                              , "--high"     , "#ec5f67"
                               ] 50
          , Run Memory         [ "--template" ,"M: <usedratio>%"
                               , "--Low"      , "30"        -- units: %
                               , "--High"     , "90"        -- units: %
-                              , "--low"      , "#7CC844"
-                              , "--normal"   , "#52CBB0"
-                              , "--high"     , "#EF5253"
+                              , "--low"      , "#99c794"
+                              , "--normal"   , "#5fb3b3"
+                              , "--high"     , "#ec5f67"
                               ] 10
          , Run Battery        [ "--template" , "B: <acstatus>"
                               , "--Low"      , "20"        -- units: %
                               , "--High"     , "60"        -- units: %
-                              , "--low"      , "#EF5253"
-                              , "--normal"   , "#52CBB0"
-                              , "--high"     , "#7CC844"
+                              , "--low"      , "#ec5f67"
+                              , "--normal"   , "#5fb3b3"
+                              , "--high"     , "#99c794"
                               , "--" -- battery specific options
                                         -- discharging status
                                         , "-o" , "<left>% (<timeleft>)"
                                         -- AC "on" status
                                         , "-O" , "<fc=#33B5E1>Charging</fc>"
                                         -- charged status
-                                        , "-i" , "<fc=#52CBB0>Charged</fc>"
+                                        , "-i" , "<fc=#5fb3b3>Charged</fc>"
                               ] 50
          --   (%F = y-m-d date, %a = day of week, %T = h:m:s time)
          , Run Date           "%a %F %T" "date" 10

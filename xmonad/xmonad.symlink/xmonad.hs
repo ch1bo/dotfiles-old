@@ -40,7 +40,6 @@ xmobar = statusBar "xmobar" pp toggleStrutsKey
   pp = defaultPP { ppCurrent = xmobarColor base0D "" . wrap "[" "]"
                  , ppTitle   = xmobarColor base0D "" . shorten 40
                  , ppVisible = wrap "(" ")"
-                 , ppUrgent  = xmobarColor base0F ""
                  }
   -- Toggle display of top bar
   toggleStrutsKey XConfig {XMonad.modMask = modMask} = (modMask, xK_b)
@@ -147,7 +146,6 @@ manageHooks = composeAll
   , className =? "Gimp" --> doFloat
   ]
 
--- Colors: base16-solar-flare
-base01 = "#222E38"
-base0D = "#33B5E1"
-base0F = "#528BFF"
+-- Colors: base16-oceanic-next
+base01 = "#343d46"
+base0D = "#6699cc"

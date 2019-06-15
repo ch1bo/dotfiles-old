@@ -173,7 +173,9 @@ It should only modify the values of Spacemacs settings."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press `SPC T n' to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(base16-solarflare
+   dotspacemacs-themes '(base16-oceanicnext
+                         base16-solarflare
+                         base16-onedark
                          spacemacs-dark
                          spacemacs-light)
 
@@ -551,12 +553,6 @@ before packages are loaded."
                 (when (file-executable-p eslint)
                   (setq-local flycheck-javascript-eslint-executable eslint)))
               ))
-  ;; Custom theming
-  (setq theming-modifications
-        '((base16-solarflare (fringe :background nil)
-                             (iedit-occurrence :inherit spacemacs-iedit-face)
-                             )
-          ))
   ;; Default browser
   (setq browse-url-browser-function 'browse-url-chromium)
   ;; Org
