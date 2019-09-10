@@ -39,6 +39,6 @@ xbindkeys
 xrdb -load $HOME/.Xresources
 
 # Desktop wallpaper
-feh --bg-scale $HOME/.dotfiles/x/matterhorn2.jpg
+feh --bg-scale $HOME/.dotfiles/x/matterhorn3.jpg
 
 exec xmonad
