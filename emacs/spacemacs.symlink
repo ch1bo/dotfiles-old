@@ -51,7 +51,7 @@ This function should only modify configuration layer settings."
      lua
      markdown
      (mu4e :variables
-           mu4e-installation-path "/usr/share/emacs/site-lisp"
+           mu4e-installation-path "~/.nix-profile/share/emacs/site-lisp/"
            mu4e-enable-mode-line t
            mu4e-maildirs-extension t
            )
@@ -493,20 +493,6 @@ before packages are loaded."
       (shr-insert-document dom)
       (goto-char (point-min))))
   (setq mu4e-html2text-command 'mu4e-render-html-message)
-  ;; Render and import ical attachments
-  (defun mu4e-ical-schedule (msg attachnum)
-    "schedule from ical attachment"
-    (let ((file (concat org-directory "calendar.org")))
-      (mu4e-view-pipe-attachment msg attachnum
-                                 (concat "ical2org --count --repeats=false --scheduled -d=" file " -a=" file " -"))))
-  (defun mu4e-ical-view (msg attachnum)
-    "convert ical attachment and show in buffer"
-    (mu4e-view-pipe-attachment msg attachnum "ical2org -"))
-  (with-eval-after-load 'mu4e
-    ;; define 'v' as the shortcut
-    (add-to-list 'mu4e-view-attachment-actions '("view appointment" . mu4e-ical-view) t)
-    ;; define 's' as the shortcut
-    (add-to-list 'mu4e-view-attachment-actions '("schedule appointment" . mu4e-ical-schedule) t))
 
   ;; Git
   (setq git-magit-status-fullscreen t)
@@ -530,7 +516,7 @@ before packages are loaded."
   ;; (require 'lsp-haskell)
   ;; (add-hook 'haskell-mode-hook 'flycheck-mode)
   ;; (add-hook 'haskell-mode-hook 'lsp)
-  (setq lsp-haskell-process-path-hie "hie-core"
+  (setq lsp-haskell-process-path-hie "ghcide"
         lsp-haskell-process-args-hie '())
   (setq lsp-ui-doc-enable nil
         lsp-ui-sideline-enable nil)
@@ -673,7 +659,7 @@ This function is called at the very end of Spacemacs initialization."
       ((agenda ""
                ((org-agenda-span
                  (quote day))))
-       (tags-todo "-idea"
+       (tags-todo "-idea&-candidate"
                   ((org-agenda-overriding-header "TODOs (unscheduled)")
                    (org-agenda-skip-function
                     (quote
@@ -684,7 +670,7 @@ This function is called at the very end of Spacemacs initialization."
       nil))))
  '(package-selected-packages
    (quote
-    (lsp-treemacs lv helm-lsp company-lsp lsp-ui lsp-python-ms python cquery ccls vue-mode edit-indirect ssass-mode vue-html-mode xterm-color shell-pop multi-term eshell-z eshell-prompt-extras esh-help nix-mode helm-nixos-options company-nixos-options nixos-options ox-jira flycheck-ndevtools csv-mode yasnippet-snippets yapfify yaml-mode ws-butler winum which-key web-mode web-beautify volatile-highlights vi-tilde-fringe uuidgen use-package toc-org tide tagedit symon string-inflection spaceline-all-the-icons smeargle slim-mode scss-mode sass-mode restart-emacs realgud rainbow-mode rainbow-identifiers rainbow-delimiters pyvenv pytest pyenv-mode py-isort pug-mode psci psc-ide popwin pippel pip-requirements phpunit phpcbf php-extras php-auto-yasnippets persp-mode pcre2el password-generator paradox overseer orgit org-projectile org-present org-pomodoro org-mime org-download org-bullets org-brain open-junk-file ob-sml nginx-mode neotree nameless mu4e-maildirs-extension mu4e-alert move-text mmm-mode markdown-toc magit-gitflow macrostep lorem-ipsum livid-mode live-py-mode linum-relative link-hint less-css-mode js2-refactor js-doc intero insert-shebang indent-guide importmagic impatient-mode hy-mode hungry-delete hlint-refactor hl-todo hindent highlight-parentheses highlight-numbers highlight-indentation helm-themes helm-swoop helm-rtags helm-pydoc helm-purpose helm-projectile helm-mu helm-mode-manager helm-make helm-hoogle helm-gitignore helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag haskell-snippets google-translate google-c-style golden-ratio godoctor go-tag go-rename go-guru go-eldoc gnuplot gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md fuzzy font-lock+ flyspell-correct-helm flycheck-rtags flycheck-pos-tip flycheck-haskell flycheck-clang-tidy flycheck-bashate flx-ido fish-mode fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-org evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-cleverparens evil-args evil-anzu eval-sexp-fu erc-yt erc-view-log erc-social-graph erc-image erc-hl-nicks emmet-mode elisp-slime-nav editorconfig dumb-jump drupal-mode dockerfile-mode docker disaster diminish define-word dante cython-mode counsel-projectile company-web company-tern company-statistics company-shell company-rtags company-php company-lua company-go company-ghci company-ghc company-cabal company-c-headers company-anaconda column-enforce-mode color-identifiers-mode coffee-mode cmm-mode clean-aindent-mode clang-format centered-cursor-mode base16-theme auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell)))
+    (gnu-elpa-keyring-update lsp-treemacs lv helm-lsp company-lsp lsp-ui lsp-python-ms python cquery ccls vue-mode edit-indirect ssass-mode vue-html-mode xterm-color shell-pop multi-term eshell-z eshell-prompt-extras esh-help nix-mode helm-nixos-options company-nixos-options nixos-options ox-jira flycheck-ndevtools csv-mode yasnippet-snippets yapfify yaml-mode ws-butler winum which-key web-mode web-beautify volatile-highlights vi-tilde-fringe uuidgen use-package toc-org tide tagedit symon string-inflection spaceline-all-the-icons smeargle slim-mode scss-mode sass-mode restart-emacs realgud rainbow-mode rainbow-identifiers rainbow-delimiters pyvenv pytest pyenv-mode py-isort pug-mode psci psc-ide popwin pippel pip-requirements phpunit phpcbf php-extras php-auto-yasnippets persp-mode pcre2el password-generator paradox overseer orgit org-projectile org-present org-pomodoro org-mime org-download org-bullets org-brain open-junk-file ob-sml nginx-mode neotree nameless mu4e-maildirs-extension mu4e-alert move-text mmm-mode markdown-toc magit-gitflow macrostep lorem-ipsum livid-mode live-py-mode linum-relative link-hint less-css-mode js2-refactor js-doc intero insert-shebang indent-guide importmagic impatient-mode hy-mode hungry-delete hlint-refactor hl-todo hindent highlight-parentheses highlight-numbers highlight-indentation helm-themes helm-swoop helm-rtags helm-pydoc helm-purpose helm-projectile helm-mu helm-mode-manager helm-make helm-hoogle helm-gitignore helm-flx helm-descbinds helm-css-scss helm-company helm-c-yasnippet helm-ag haskell-snippets google-translate google-c-style golden-ratio godoctor go-tag go-rename go-guru go-eldoc gnuplot gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md fuzzy font-lock+ flyspell-correct-helm flycheck-rtags flycheck-pos-tip flycheck-haskell flycheck-clang-tidy flycheck-bashate flx-ido fish-mode fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-org evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-cleverparens evil-args evil-anzu eval-sexp-fu erc-yt erc-view-log erc-social-graph erc-image erc-hl-nicks emmet-mode elisp-slime-nav editorconfig dumb-jump drupal-mode dockerfile-mode docker disaster diminish define-word dante cython-mode counsel-projectile company-web company-tern company-statistics company-shell company-rtags company-php company-lua company-go company-ghci company-ghc company-cabal company-c-headers company-anaconda column-enforce-mode color-identifiers-mode coffee-mode cmm-mode clean-aindent-mode clang-format centered-cursor-mode base16-theme auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line ac-ispell)))
  '(rainbow-ansi-colors t)
  '(send-mail-function (quote smtpmail-send-it)))
 (custom-set-faces
