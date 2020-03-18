@@ -53,7 +53,6 @@ keyBindings conf@(XConfig {XMonad.modMask = modMask}) = Map.fromList $
     , ((modMask, xK_Return), spawn $ XMonad.terminal conf)
     -- Launch rofi
     , ((modMask, xK_p), spawn "rofi -show run")
-    , ((modMask .|. shiftMask, xK_p), spawn "rofi -show drun")
     -- Close focused window
     , ((modMask, xK_q), kill)
     -- Rotate through the available layout algorithms
