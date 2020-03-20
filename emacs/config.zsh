@@ -1,1 +1,1 @@
-export EDITOR="emacs"
+export EDITOR="$DOTFILES/emacs/ec"
