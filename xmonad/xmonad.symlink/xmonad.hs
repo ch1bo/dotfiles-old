@@ -1,23 +1,34 @@
-{-# LANGUAGE DeriveDataTypeable, MultiParamTypeClasses, TypeSynonymInstances #-}
+{-# LANGUAGE DeriveDataTypeable    #-}
+{-# LANGUAGE MultiParamTypeClasses #-}
+{-# LANGUAGE TypeSynonymInstances  #-}
 
-import Data.Ratio ((%))
-import System.Exit (ExitCode(..), exitWith)
-import XMonad hiding (config)
-import XMonad.Actions.Navigation2D (withNavigation2DConfig, defaultNavigation2DConfig, windowGo, windowSwap, switchLayer, screenGo)
-import XMonad.Hooks.DynamicLog (statusBar, PP(..), defaultPP, xmobarColor, wrap, shorten)
-import XMonad.Layout.Spacing (spacing)
-import XMonad.Layout.Gaps (gaps)
-import XMonad.Layout.IM (gridIM, Property(..))
-import XMonad.Layout.Maximize (maximize, maximizeRestore)
-import XMonad.Layout.MultiToggle (mkToggle, single, Toggle(..), Transformer(..))
-import XMonad.Layout.MultiToggle.Instances (StdTransformers(SMARTBORDERS))
-import XMonad.Layout.LayoutModifier (ModifiedLayout(..))
-import XMonad.Layout.ResizableTile (ResizableTall(..), MirrorResize(..))
-import XMonad.Util.Scratchpad (scratchpadSpawnAction, scratchpadManageHook)
-import XMonad.Util.Types (Direction2D(..))
+import           Data.Ratio                          ((%))
+import           System.Exit                         (ExitCode (..), exitWith)
+import           XMonad                              hiding (config)
+import           XMonad.Actions.Navigation2D         (defaultNavigation2DConfig,
+                                                      screenGo, switchLayer,
+                                                      windowGo, windowSwap,
+                                                      withNavigation2DConfig)
+import           XMonad.Hooks.DynamicLog             (PP (..), defaultPP,
+                                                      shorten, statusBar, wrap,
+                                                      xmobarColor)
+import           XMonad.Layout.Gaps                  (gaps)
+import           XMonad.Layout.IM                    (Property (..), gridIM)
+import           XMonad.Layout.LayoutModifier        (ModifiedLayout (..))
+import           XMonad.Layout.Maximize              (maximize, maximizeRestore)
+import           XMonad.Layout.MultiToggle           (Toggle (..),
+                                                      Transformer (..),
+                                                      mkToggle, single)
+import           XMonad.Layout.MultiToggle.Instances (StdTransformers (SMARTBORDERS))
+import           XMonad.Layout.ResizableTile         (MirrorResize (..),
+                                                      ResizableTall (..))
+import           XMonad.Layout.Spacing               (spacing)
+import           XMonad.Util.Scratchpad              (scratchpadManageHook,
+                                                      scratchpadSpawnAction)
+import           XMonad.Util.Types                   (Direction2D (..))
 
-import qualified Data.Map as Map
-import qualified XMonad.StackSet as StackSet
+import qualified Data.Map                            as Map
+import qualified XMonad.StackSet                     as StackSet
 
 main = xmobar config >>= xmonad
 
@@ -143,6 +154,7 @@ layouts = id
 manageHooks = composeAll
   [ scratchpadManageHook (StackSet.RationalRect 0.25 0.25 0.5 0.5)
   , className =? "Gimp" --> doFloat
+  , title =? "Microsoft Teams Notification" --> doFloat
   ]
 
 -- Colors: base16-oceanic-next
