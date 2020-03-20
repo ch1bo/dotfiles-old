@@ -597,6 +597,8 @@ before packages are loaded."
                                        "</style>\n"))))))
   ;; File extension -> mode association
   (add-to-list 'auto-mode-alist '("\\.mc\\'" . java-mode))
+  ;; Enable use of emacsclient
+  (server-start)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
