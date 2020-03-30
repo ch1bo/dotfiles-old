@@ -154,7 +154,7 @@ layouts = id
 manageHooks = composeAll
   [ scratchpadManageHook (StackSet.RationalRect 0.25 0.25 0.5 0.5)
   , className =? "Gimp" --> doFloat
-  , title =? "Microsoft Teams Notification" --> doFloat
+  , title =? "Microsoft Teams Notification" --> doFloat <+> doF StackSet.focusDown
   ]
 
 -- Colors: base16-oceanic-next
