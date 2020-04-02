@@ -51,12 +51,20 @@
 (map! :leader
       :desc "M-x"                   "SPC" #'execute-extended-command
       :desc "Search in project"     "/"   #'+default/search-project
+      ;;; <leader> a --- agenda
+      :desc "Org agenda"            "a"   #'org-agenda
       ;;; <leader> g --- git/version control
-      (:prefix-map ("g" . "git")
-          :desc "Git status"         "s"   #'magit-status
-      ))
+      (:prefix ("g" . "git")
+          :desc "Git status"        "s"   #'magit-status
+          ))
+;; Local with-editor key bindings
+(map! :map with-editor-mode-map
+      :localleader
+      "," #'with-editor-finish
+      "k" #'with-editor-cancel)
 
 ;; Org
+;; TODO(SN): keybindings in org-agenda (e.g. org-agenda-later)
 (setq org-directory "~/documents/org/"
       org-default-notes-file (concat org-directory "notes.org")
       org-agenda-files (list org-directory)
