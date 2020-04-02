@@ -8,5 +8,5 @@
 	path = shell/zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
 [submodule "emacs/emacs.d.symlink"]
-	path = emacs/emacs.d.symlink
+	path = emacs/spacemacs.emacs.d
 	url = https://github.com/syl20bnr/spacemacs
