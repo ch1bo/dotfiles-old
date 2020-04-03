@@ -61,6 +61,7 @@
 (map! :map with-editor-mode-map
       :localleader
       "," #'with-editor-finish
+      "f" #'with-editor-finish
       "k" #'with-editor-cancel)
 
 ;; Org
