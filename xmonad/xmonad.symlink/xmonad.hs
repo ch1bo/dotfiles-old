@@ -13,7 +13,6 @@ import           XMonad.Hooks.DynamicLog             (PP (..), defaultPP,
                                                       shorten, statusBar, wrap,
                                                       xmobarColor)
 import           XMonad.Layout.Gaps                  (gaps)
-import           XMonad.Layout.IM                    (Property (..), gridIM)
 import           XMonad.Layout.LayoutModifier        (ModifiedLayout (..))
 import           XMonad.Layout.Maximize              (maximize, maximizeRestore)
 import           XMonad.Layout.MultiToggle           (Toggle (..),
@@ -101,7 +100,7 @@ keyBindings conf@(XConfig {XMonad.modMask = modMask}) = Map.fromList $
     , ((modMask .|. controlMask, xK_j), sendMessage Expand)
     , ((modMask .|. controlMask, xK_k), sendMessage Shrink)
     -- Directional navigation of screens
-    , ((modMask, xK_grave), screenGo L True)
+    , ((modMask, xK_Escape), screenGo L True)
     , ((modMask, xK_BackSpace), screenGo R True)
     -- Toggle maximize
     , ((modMask, xK_m), withFocused (sendMessage . maximizeRestore))
@@ -135,7 +134,7 @@ instance Transformer EXPLODE Window where
 layouts = id
   . mkToggle (single SMARTBORDERS)
   . mkToggle (single EXPLODE)
-  $ tiled ||| Mirror tiled ||| Full ||| im
+  $ tiled ||| Mirror tiled ||| Full
  where
   -- Resizable tiling with maximize modifier
   tiled = maximize $ ResizableTall nmaster delta ratio []
@@ -145,11 +144,6 @@ layouts = id
   ratio = 1/2
   -- Percent of screen to increment by when resizing panes
   delta = 3/100
-  -- Instant messaging, 1/6 of width
-  im = gridIM (1%6) (skype `Or` pidgin)
-  skype = (ClassName "Skype") `And` (Not $ Role "ConversationsWindow")
-                              `And` (Not $ Role "CallWindow")
-  pidgin = (ClassName "Pidgin") `And` (Role "buddy_list")
 
 manageHooks = composeAll
   [ scratchpadManageHook (StackSet.RationalRect 0.25 0.25 0.5 0.5)
