@@ -595,6 +595,8 @@ before packages are loaded."
                                          (buffer-string))
                                        "/*]]>*/-->\n"
                                        "</style>\n"))))))
+  ;; Remove "validate" link in html export
+  (setq org-html-validation-link "")
   ;; File extension -> mode association
   (add-to-list 'auto-mode-alist '("\\.mc\\'" . java-mode))
   ;; Enable use of emacsclient
